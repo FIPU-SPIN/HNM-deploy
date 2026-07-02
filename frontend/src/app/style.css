@@ -37,35 +37,30 @@
       width: 100%;
   }
 
-  .header-slike img {
-      width: 100%;
-      height: 100%;
-      object-fit: auto;
-      display: flex;
-      border-radius: 20px;
-  }
-
   .header-slike {
-      display: flex;
-      flex-direction: row;  
-      align-items: center;
-      padding:10px;
-      gap: 10px;
-      background-color: #00949b;
-      width: 100%;
-      
-  }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;   
+    padding: 10px;
+    gap: clamp(4px, 2vw, 10px);
+    background-color: #00949b;
+    width: 100%;
+}
 
-  .header-slike a {
-      width: 150px;
-      height: 90px;
-      display: flex;
-      flex-shrink: 0px;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      justify-content: center;
-  }
+.header-slike a {
+    width: clamp(70px, 15vw, 150px);
+    height: clamp(42px, 9vw, 90px);
+    display: flex;
+    position: relative;   
+    flex-shrink: 1;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+}
 
   .iznadslika {
       padding-left: 20px;
@@ -213,23 +208,37 @@
   }
 
   .footer .footersadrzaj {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
 
-  .footer .footerlijevo {
-      display: flex;
-      gap: 15px;
-  }
+.footer .footerlijevo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
 .footer .footerlijevo img {
     height: 70px;
     width: auto;
+    max-width: 100%;
     object-fit: contain;
     border-radius: 10px;
 }
 
+@media (max-width: 480px) {
+    .footer .footerlijevo img {
+        height: 50px;
+    }
+
+    .footer .footersadrzaj {
+        justify-content: center;
+        text-align: center;
+    }
+}
   .footer .footerdesno {
       display: flex;
       gap: 30px;
@@ -279,7 +288,7 @@
 
   .glavne-slike .slike-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
       gap: 30px;
       justify-items: center;
       
@@ -321,8 +330,9 @@
   }
 
   .glavne-slike .slike2 {
-      width: 500px;
-  }
+    width: 100%;
+    max-width: 500px;
+}
 
   .glavne-slike .slike2 img {
       width: 100%;

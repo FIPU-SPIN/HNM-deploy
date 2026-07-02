@@ -14,8 +14,6 @@ export default function Footer() {
         </div>
 
         <div className="footerdesno">
-          <a href="#">Poveznica 1</a>
-          <a href="#">Poveznica 2</a>
         </div>
       </div>
 
