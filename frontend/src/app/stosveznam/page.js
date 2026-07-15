@@ -3,17 +3,42 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 export default function StoSveZnamPage() {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const currentAudioRef = useRef(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
   }, []);
+
+  // Funkcija za reprodukciju zvuka
+  const playSound = (soundName) => {
+    if (!soundName) return;
+    
+    if (currentAudioRef.current) {
+      currentAudioRef.current.pause();
+      currentAudioRef.current.currentTime = 0;
+      currentAudioRef.current = null;
+    }
+    
+    const audio = new Audio(`/assets/fix_sounds/${soundName}.WAV`);
+    
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        if (error.name !== 'AbortError') {
+          console.error("Greška pri reprodukciji:", error);
+        }
+      });
+    }
+    
+    currentAudioRef.current = audio;
+  };
 
   return (
     <main className="bodydruga">
@@ -46,17 +71,6 @@ export default function StoSveZnamPage() {
           Nakon ove razine spremni ste za uvježbavanje percepcije i produkcije naglasaka.
         </p>
 
-        <div className="primjer-box">
-          <p>Vježbe su podijeljene u cjeline:</p>
-          <div className="botuni-container-ssz">
-            <Link href="/stosveznam/KojimNaglascima" className="botun-ssz">Koji je Vaš naglasni sustav?</Link>
-            <Link href="/stosveznam/Inventar" className="botun-ssz">Naglasni inventar</Link>
-            <Link href="/stosveznam/Distribucijska" className="botun-ssz">Distribucijska pravila</Link>
-            <Link href="/stosveznam/GovornaRijec" className="botun-ssz">Govorna riječ s klitikama</Link>
-            <Link href="/stosveznam/NaglasciUParadigmi" className="botun-ssz">Naglasak u paradigmi</Link>
-          </div>
-        </div>
-
         <h3>Jezična biografija govornika</h3>
 
         <p>
@@ -78,9 +92,42 @@ export default function StoSveZnamPage() {
           specifični po svojim fonološkim i prozodijskim značajkama.
         </p>
 
+        {/* SLIKA */}
+        <div className="slika-placeholder">
+          <Image
+            src="/assets/images/ikona.png"
+            alt="Ilustracija naglasnog sustava"
+            width={800}
+            height={400}
+            className="slika-primjer"
+          />
+          <p className="slika-napomena">
+            <em>Slika 01 - Prikaz naglasnog sustava</em>
+          </p>
+        </div>
+
+        {/* GRADOVI - KAO SURADNICI */}
         <div className="primjer-box">
           <p>Regionalne razlike mogu se uočiti u gradovima poput:</p>
-          <p className="primjer">Zagreb • Rijeka • Osijek • Split</p>
+          <div className="gradovi-container">
+            <div className="grad-kartica" onClick={() => playSound("Zagreb")}>
+              <span className="grad-ime">Zagreb</span>
+              <span className="grad-zvuk-ikona">🔊</span>
+            </div>
+            <div className="grad-kartica" onClick={() => playSound("Rijeka")}>
+              <span className="grad-ime">Rijeka</span>
+              <span className="grad-zvuk-ikona">🔊</span>
+            </div>
+            <div className="grad-kartica" onClick={() => playSound("Osijek")}>
+              <span className="grad-ime">Osijek</span>
+              <span className="grad-zvuk-ikona">🔊</span>
+            </div>
+            <div className="grad-kartica" onClick={() => playSound("Split")}>
+              <span className="grad-ime">Split</span>
+              <span className="grad-zvuk-ikona">🔊</span>
+            </div>
+          </div>
+          <p className="grad-napomena">🔊 Kliknite na grad za izgovor</p>
         </div>
 
         <h3>Visinski naglasni sustav</h3>
@@ -97,19 +144,6 @@ export default function StoSveZnamPage() {
           naglasni sustav imaju i ne(novo)štokavski govori koji imaju akut, a to su neki
           čakavski, kajkavski i staroštokavski govori.
         </p>
-
-        <div className="slika-placeholder">
-          <Image
-            src="/assets/images/ikona.png"
-            alt="Ilustracija naglasnog sustava"
-            width={800}
-            height={400}
-            className="slika-primjer"
-          />
-          <p className="slika-napomena">
-            <em>Slika 01 - Prikaz naglasnog sustava</em>
-          </p>
-        </div>
 
         <h3>Udarni naglasni sustav</h3>
 
@@ -166,7 +200,7 @@ export default function StoSveZnamPage() {
 
       </div>
 
-      {/* KVIZ CTA - SAMO ZA PRIJAVLJENE */}
+      {/* KVIZ CTA */}
       <div className="kviz-cta">
         <h3>🧠 Provjeri svoje znanje</h3>
         <p>
