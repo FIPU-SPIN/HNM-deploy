@@ -11,28 +11,27 @@ export default function InventarPage() {
   const currentAudioRef = useRef(null);
 
   const playSound = (soundName) => {
-  if (!soundName) return;
+    if (!soundName) return;
 
-  if (currentAudioRef.current) {
-    currentAudioRef.current.pause();
-    currentAudioRef.current.currentTime = 0;
-    currentAudioRef.current = null;
-  }
+    if (currentAudioRef.current) {
+      currentAudioRef.current.pause();
+      currentAudioRef.current.currentTime = 0;
+      currentAudioRef.current = null;
+    }
 
-  const audio = new Audio(`/assets/fix_sounds/${soundName}.wav`);
+    const audio = new Audio(`/assets/fix_sounds/${soundName}.wav`);
 
-  const playPromise = audio.play();
-  if (playPromise !== undefined) {
-    playPromise.catch((error) => {
-      // Ignoriramo AbortError jer dolazi do prekida pozivom pause()
-      if (error.name !== 'AbortError') {
-        console.error("Greška pri reprodukciji:", error);
-      }
-    });
-  }
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        if (error.name !== 'AbortError') {
+          console.error("Greška pri reprodukciji:", error);
+        }
+      });
+    }
 
-  currentAudioRef.current = audio;
-};
+    currentAudioRef.current = audio;
+  };
 
   const playZvukIzZnaka = (znak) => {
     const mapa = {
@@ -42,6 +41,7 @@ export default function InventarPage() {
       "á": "z3_du",
       "ã": "z7_ak",
       "ā": "z5_znd",
+      "ă": "z6_znk",
       "a̍": "z9_ud",
     };
     const soundName = mapa[znak];
@@ -118,9 +118,10 @@ export default function InventarPage() {
             />
           </div>
           <p className="uvodna-definicija">
-            Naglasak je isticanje jednoga sloga u odnosu na druge slogove unutar riječi.
-            Naglasak je istodobni ostvaraj jačine (siline, intenziteta), trajanja (kvantitete) i tona (tonske visine).
-          </p>
+  Naglasak je isticanje jednoga sloga u odnosu na druge slogove unutar riječi.
+  <br />
+  Naglasak je istodobni ostvaraj jačine (siline, intenziteta), trajanja (kvantitete) i tona (tonske visine).
+</p>
         </div>
       </div>
 
@@ -158,8 +159,8 @@ export default function InventarPage() {
                 <td className="naglasak-tip">Silazni</td>
                 <td className="zvuk-link" data-zvuk="z1_ks">ȁ</td>
                 <td className="zvuk-link" data-zvuk="z2_ds">ȃ</td>
-                <td>ă</td>
-                <td>ā</td>
+                <td className="zvuk-link" data-zvuk="z6_znk">ă</td>
+                <td className="zvuk-link" data-zvuk="z5_znd">ā</td>
               </tr>
               <tr>
                 <td className="naglasak-tip">Uzlazni</td>
@@ -170,7 +171,7 @@ export default function InventarPage() {
               </tr>
             </tbody>
           </table>
-          <p className="tablica-napomena"><em>🔊 Klikom na označene znakove (ȁ, ȃ, à, á) čujete izgovor</em></p>
+          <p className="tablica-napomena"><em>🔊 Klikom na označene znakove (ȁ, ȃ, à, á, ā, ă) čujete izgovor</em></p>
         </div>
 
         <div className="primjeri-rijeci">
@@ -253,7 +254,7 @@ export default function InventarPage() {
               <button className="zvuk-gumb praat-zvuk-gumb" data-zvuk="1-2-1" onClick={() => playSound("1-2-1")}>🔊 Poslušaj izgovor</button>
             </p>
             <div className="praat-slike-container">
-              <Image src="/assets/images/Picture3.png" alt="Akustički prikaz naglasaka u programu Praat" width={800} height={500} className="praat-slika" />
+              <Image src="/assets/images/svacetrinaglaska.png" alt="Akustički prikaz naglasaka u programu Praat" width={800} height={500} className="praat-slika" />
               <p className="slika-napomena"></p>
               <div className="praat-link-container">
                 <a href="https://www.fon.hum.uva.nl/praat/" target="_blank" rel="noopener noreferrer" className="praat-link-button">🔗 Praat - program za fonetsku analizu</a>

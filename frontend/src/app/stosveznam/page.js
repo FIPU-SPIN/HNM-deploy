@@ -16,7 +16,7 @@ export default function StoSveZnamPage() {
     setIsLoggedIn(!!token);
   }, []);
 
-  // Funkcija za reprodukciju zvuka
+  // Funkcija za reprodukciju zvuka - ISTA KAO NA INVENTARU (.wav)
   const playSound = (soundName) => {
     if (!soundName) return;
     
@@ -26,7 +26,7 @@ export default function StoSveZnamPage() {
       currentAudioRef.current = null;
     }
     
-    const audio = new Audio(`/assets/fix_sounds/${soundName}.WAV`);
+    const audio = new Audio(`/assets/fix_sounds/${soundName}.wav`);
     
     const playPromise = audio.play();
     if (playPromise !== undefined) {
@@ -62,14 +62,25 @@ export default function StoSveZnamPage() {
       {/* UVOD */}
       <div className="stosveznam-intro">
 
-        <p className="primjer">
-          Ovo je mjesto za identificiranje svoga naglasnog sustava te za provjeru
-          osnovnih znanja o naglascima i naglasnoj normi, o naglasnim sustavima,
-          varijetetima i pravilima u hrvatskome jeziku. Pojašnjenja i vježbe podijeljeni
-          su u nekoliko cjelina i tema: Koji je Vaš naglasni sustav?; Naglasni inventar;
-          Distribucijska pravila; Govorna riječ s klitikama; Naglasak u paradigmi.
-          Nakon ove razine spremni ste za uvježbavanje percepcije i produkcije naglasaka.
-        </p>
+      <div className="primjer-box uvodni-tekst">
+  <p>
+    Ovo je mjesto za identificiranje svoga naglasnog sustava te za provjeru
+    osnovnih znanja o naglascima i naglasnoj normi, o naglasnim sustavima,
+    varijetetima i pravilima u hrvatskome jeziku.
+  </p>
+  <p>
+    <strong>Pojašnjenja i vježbe podijeljeni su u nekoliko cjelina:</strong>
+  </p>
+  <div className="teme-lista">
+    <div className="tema-stavka">Naglasni inventar</div>
+    <div className="tema-stavka">Distribucijska pravila</div>
+    <div className="tema-stavka">Govorna riječ s klitikama</div>
+    <div className="tema-stavka">Naglasak u paradigmi</div>
+  </div>
+  <p className="zakljucak-tekst">
+    <strong>Nakon ove razine spremni ste za uvježbavanje percepcije i produkcije naglasaka.</strong>
+  </p>
+</div>
 
         <h3>Jezična biografija govornika</h3>
 
@@ -92,39 +103,51 @@ export default function StoSveZnamPage() {
           specifični po svojim fonološkim i prozodijskim značajkama.
         </p>
 
-        {/* SLIKA */}
+        {/* SLIKA S GRADOVIMA NA KARTI */}
         <div className="slika-placeholder">
-          <Image
-            src="/assets/images/ikona.png"
-            alt="Ilustracija naglasnog sustava"
-            width={800}
-            height={400}
-            className="slika-primjer"
-          />
-          <p className="slika-napomena">
-            <em>Slika 01 - Prikaz naglasnog sustava</em>
-          </p>
-        </div>
+          <div className="karta-wrapper">
+            <Image
+              src="/assets/images/ikona.png"
+              alt="Ilustracija naglasnog sustava"
+              width={800}
+              height={900}
+              className="slika-primjer"
+            />
 
-        {/* GRADOVI - KAO SURADNICI */}
-        <div className="primjer-box">
-          <p>Regionalne razlike mogu se uočiti u gradovima poput:</p>
-          <div className="gradovi-container">
-            <div className="grad-kartica" onClick={() => playSound("Zagreb")}>
-              <span className="grad-ime">Zagreb</span>
-              <span className="grad-zvuk-ikona">🔊</span>
+            <div
+              className="grad-marker"
+              style={{ top: "28%", left: "47%" }}
+              onClick={() => playSound("Zagreb")}
+            >
+              <span className="grad-tocka"></span>
+              <span className="grad-label">Zagreb</span>
             </div>
-            <div className="grad-kartica" onClick={() => playSound("Rijeka")}>
-              <span className="grad-ime">Rijeka</span>
-              <span className="grad-zvuk-ikona">🔊</span>
+
+            <div
+              className="grad-marker"
+              style={{ top: "40%", left: "21%" }}
+              onClick={() => playSound("Rijeka")}
+            >
+              <span className="grad-tocka"></span>
+              <span className="grad-label">Rijeka</span>
             </div>
-            <div className="grad-kartica" onClick={() => playSound("Osijek")}>
-              <span className="grad-ime">Osijek</span>
-              <span className="grad-zvuk-ikona">🔊</span>
+
+            <div
+              className="grad-marker"
+              style={{ top: "34%", left: "78%" }}
+              onClick={() => playSound("Osijek")}
+            >
+              <span className="grad-tocka"></span>
+              <span className="grad-label">Osijek</span>
             </div>
-            <div className="grad-kartica" onClick={() => playSound("Split")}>
-              <span className="grad-ime">Split</span>
-              <span className="grad-zvuk-ikona">🔊</span>
+
+            <div
+              className="grad-marker"
+              style={{ top: "75%", left: "54%" }}
+              onClick={() => playSound("Split")}
+            >
+              <span className="grad-tocka"></span>
+              <span className="grad-label">Split</span>
             </div>
           </div>
           <p className="grad-napomena">🔊 Kliknite na grad za izgovor</p>
@@ -132,9 +155,23 @@ export default function StoSveZnamPage() {
 
         <h3>Visinski naglasni sustav</h3>
 
+        {/* SLIKA ZA VISINSKI */}
+<div className="sustav-slika-container">
+  <Image
+    src="/assets/images/trava_visinski.png"
+    alt="Visinski naglasni sustav - ilustracija"
+    width={800}
+    height={400}
+    className="sustav-slika"
+  />
+  <p className="slika-napomena">
+    <em>Ilustracija visinskog naglasnog sustava</em>
+  </p>
+</div>
+
         <p>
           Hrvatski standardni jezik opisuje se kao jezik s visinskim naglasnim sustavom
-          (tonsko-dinamičkim, melodijskim, engl. pitch-accent language) u kojemu su četiri
+          (tonsko-dinamičkim, melodijskim, <i>engl. pitch-accent language</i>) u kojemu su četiri
           različita naglaska: kratkosilazni, dugosilazni, kratkouzlazni i dugouzlazni te
           zanaglasna dužina i kračina. Takav četveronaglasni sustav ostvaruje se u mnogim
           hrvatskim mjesnim govorima, osobito u Slavoniji (primjerice u Osijeku, Vinkovcima,
@@ -147,10 +184,24 @@ export default function StoSveZnamPage() {
 
         <h3>Udarni naglasni sustav</h3>
 
+{/* SLIKA ZA UDARNI */}
+<div className="sustav-slika-container">
+  <Image
+    src="/assets/images/trava_udarni.png"
+    alt="Udarni naglasni sustav - ilustracija"
+    width={800}
+    height={400}
+    className="sustav-slika"
+  />
+  <p className="slika-napomena">
+    <em>Ilustracija udarnog naglasnog sustava</em>
+  </p>
+</div>
+
         <p>
           Osim visinskoga naglasnog sustava u hrvatskom jeziku (su)postoji i udarni
           (dinamički) naglasni sustav, a naglasak koji se u njemu ostvaruje nazivamo
-          udarnim (jačinskim, ekspiratornim, dinamičkim, engl. stress-accent). U udarnom
+          udarnim (jačinskim, ekspiratornim, dinamičkim, <i>engl. stress-accent</i>). U udarnom
           sustavu relevantno je samo mjesto naglaska u riječi. Udarni naglasak najsličniji
           je kratkosilaznom naglasku iz visinskoga sustava. Udarni naglasni sustav veže se
           ponajviše za gradske govore (primjerice u Zagrebu, Varaždinu, Karlovcu, Rijeci,
@@ -170,7 +221,8 @@ export default function StoSveZnamPage() {
 
         <div className="primjer-box">
           <p>Ključna razlika:</p>
-          <p className="primjer">visinski = ton + duljina • udarni = pozicija naglaska</p>
+          <p className="primjer">visinski = intenzitet + ton + trajanje</p>
+          <p className="primjer">udarni = intenzitet (+trajanje)</p>
         </div>
 
         <h3>Prepoznavanje govora</h3>
