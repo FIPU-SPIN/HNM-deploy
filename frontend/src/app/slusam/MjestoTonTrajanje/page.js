@@ -5,7 +5,6 @@ import Image from "next/image";
 export default function MjestoTonTrajanjePage() {
   return (
     <main className="bodyslusam">
-      
 
       <div className="naslovna">
         <div className="content-container mjesto">
@@ -25,10 +24,10 @@ export default function MjestoTonTrajanjePage() {
         </div>
       </div>
 
-      <div className="mjesto-intro">
-        <h2>Naslov</h2>
+      <div className="mjesto-intro u-izradi">
+        <h2>U izradi</h2>
         <p>
-          Placeholder
+          Ova stranica je trenutno u izradi. Vraćamo se uskoro s novim sadržajem!
         </p>
       </div>
 

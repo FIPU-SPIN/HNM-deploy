@@ -11,19 +11,19 @@ export default function MainNav() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
   useEffect(() => {
-  const checkAuth = () => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
-  };
+    const checkAuth = () => {
+      const token = localStorage.getItem("token");
+      setIsLoggedIn(!!token);
+    };
 
-  checkAuth();
+    checkAuth();
 
-  window.addEventListener("storage", checkAuth);
-  window.addEventListener("authChange", checkAuth);
+    window.addEventListener("storage", checkAuth);
+    window.addEventListener("authChange", checkAuth);
 
-  return () => {
-    window.removeEventListener("storage", checkAuth);
-    window.removeEventListener("authChange", checkAuth);
+    return () => {
+      window.removeEventListener("storage", checkAuth);
+      window.removeEventListener("authChange", checkAuth);
     };
   }, []);
 
@@ -163,7 +163,6 @@ export default function MainNav() {
             </div>
 
             <ul className={`dropdown-menu ${openDropdown === "izgovaram" ? "open" : ""}`}>
-              <li><Link href="/izgovaram/placeholder1">placeholder</Link></li>
             </ul>
           </li>
 
@@ -187,37 +186,34 @@ export default function MainNav() {
             </div>
 
             <ul className={`dropdown-menu ${openDropdown === "sva4ponavljam" ? "open" : ""}`}>
-              <li><Link href="/sva4ponavljam/placeholder1">placeholder</Link></li>
             </ul>
           </li>
 
           {/* GLAGOLI U MREZI */}
           <li className="dropdown">
             <div className="dropdown-header">
-              <Link href="/glagoli-u-mrezi" className="dropdown-trigger">
+              <Link href="/glagoli" className="dropdown-trigger">
                 Glagoli u mreži
               </Link>
 
               <span
-                className={`arrow ${openDropdown === "glagoli-u-mrezi" ? "open" : ""}`}
+                className={`arrow ${openDropdown === "glagoli" ? "open" : ""}`}
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  toggleDropdown("glagoli-u-mrezi");
+                  toggleDropdown("glagoli");
                 }}
               >
                 ▾
               </span>
             </div>
 
-            <ul className={`dropdown-menu ${openDropdown === "glagoli-u-mrezi" ? "open" : ""}`}>
-              <li><Link href="/glagoli-u-mrezi/placeholder1">placeholder</Link></li>
+            <ul className={`dropdown-menu ${openDropdown === "glagoli" ? "open" : ""}`}>
             </ul>
           </li>
 
 
           {/* LOGIN/REG/LOGOUT */}
-          
           <li className="nav-login-icon">
             {isLoggedIn === null ? null : (
               isLoggedIn ? (

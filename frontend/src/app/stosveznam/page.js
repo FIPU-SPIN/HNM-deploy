@@ -16,7 +16,7 @@ export default function StoSveZnamPage() {
     setIsLoggedIn(!!token);
   }, []);
 
-  // Funkcija za reprodukciju zvuka - ISTA KAO NA INVENTARU (.wav)
+  // Funkcija za reprodukciju zvuka - S BACKENDA
   const playSound = (soundName) => {
     if (!soundName) return;
     
@@ -26,7 +26,8 @@ export default function StoSveZnamPage() {
       currentAudioRef.current = null;
     }
     
-    const audio = new Audio(`/assets/fix_sounds/${soundName}.wav`);
+    // Backend URL - svi zvukovi su sada na backendu u /audio folderu
+    const audio = new Audio(`http://localhost:5000/audio/${soundName}.wav`);
     
     const playPromise = audio.play();
     if (playPromise !== undefined) {
@@ -46,7 +47,7 @@ export default function StoSveZnamPage() {
       {/* NASLOVNA */}
       <div className="naslovna">
         <div className="content-container stosveznam">
-          <h1 className="glavni-naslov">Što sve znam</h1>
+          <h1 className="glavni-naslov">Što sve znam?</h1>
           <div className="slika-stosveznam">
             <Image
               src="/assets/images/stosveznam.jpg"
@@ -62,25 +63,25 @@ export default function StoSveZnamPage() {
       {/* UVOD */}
       <div className="stosveznam-intro">
 
-      <div className="primjer-box uvodni-tekst">
-  <p>
-    Ovo je mjesto za identificiranje svoga naglasnog sustava te za provjeru
-    osnovnih znanja o naglascima i naglasnoj normi, o naglasnim sustavima,
-    varijetetima i pravilima u hrvatskome jeziku.
-  </p>
-  <p>
-    <strong>Pojašnjenja i vježbe podijeljeni su u nekoliko cjelina:</strong>
-  </p>
-  <div className="teme-lista">
-    <div className="tema-stavka">Naglasni inventar</div>
-    <div className="tema-stavka">Distribucijska pravila</div>
-    <div className="tema-stavka">Govorna riječ s klitikama</div>
-    <div className="tema-stavka">Naglasak u paradigmi</div>
-  </div>
-  <p className="zakljucak-tekst">
-    <strong>Nakon ove razine spremni ste za uvježbavanje percepcije i produkcije naglasaka.</strong>
-  </p>
-</div>
+        <div className="primjer-box uvodni-tekst">
+          <p>
+            Ovo je mjesto za identificiranje svoga naglasnog sustava te za provjeru
+            osnovnih znanja o naglascima i naglasnoj normi, o naglasnim sustavima,
+            varijetetima i pravilima u hrvatskome jeziku.
+          </p>
+          <p>
+            <strong>Pojašnjenja i vježbe podijeljeni su u nekoliko cjelina:</strong>
+          </p>
+          <div className="teme-lista">
+            <div className="tema-stavka">Naglasni inventar</div>
+            <div className="tema-stavka">Distribucijska pravila</div>
+            <div className="tema-stavka">Govorna riječ s klitikama</div>
+            <div className="tema-stavka">Naglasak u paradigmi</div>
+          </div>
+          <p className="zakljucak-tekst">
+            <strong>Nakon ove razine spremni ste za uvježbavanje percepcije i produkcije naglasaka.</strong>
+          </p>
+        </div>
 
         <h3>Jezična biografija govornika</h3>
 
@@ -156,18 +157,18 @@ export default function StoSveZnamPage() {
         <h3>Visinski naglasni sustav</h3>
 
         {/* SLIKA ZA VISINSKI */}
-<div className="sustav-slika-container">
-  <Image
-    src="/assets/images/trava_visinski.png"
-    alt="Visinski naglasni sustav - ilustracija"
-    width={800}
-    height={400}
-    className="sustav-slika"
-  />
-  <p className="slika-napomena">
-    <em>Ilustracija visinskog naglasnog sustava</em>
-  </p>
-</div>
+        <div className="sustav-slika-container">
+          <Image
+            src="/assets/images/trava_visinski.png"
+            alt="Visinski naglasni sustav - ilustracija"
+            width={800}
+            height={400}
+            className="sustav-slika"
+          />
+          <p className="slika-napomena">
+            <em>Ilustracija visinskog naglasnog sustava</em>
+          </p>
+        </div>
 
         <p>
           Hrvatski standardni jezik opisuje se kao jezik s visinskim naglasnim sustavom
@@ -184,19 +185,19 @@ export default function StoSveZnamPage() {
 
         <h3>Udarni naglasni sustav</h3>
 
-{/* SLIKA ZA UDARNI */}
-<div className="sustav-slika-container">
-  <Image
-    src="/assets/images/trava_udarni.png"
-    alt="Udarni naglasni sustav - ilustracija"
-    width={800}
-    height={400}
-    className="sustav-slika"
-  />
-  <p className="slika-napomena">
-    <em>Ilustracija udarnog naglasnog sustava</em>
-  </p>
-</div>
+        {/* SLIKA ZA UDARNI */}
+        <div className="sustav-slika-container">
+          <Image
+            src="/assets/images/trava_udarni.png"
+            alt="Udarni naglasni sustav - ilustracija"
+            width={800}
+            height={400}
+            className="sustav-slika"
+          />
+          <p className="slika-napomena">
+            <em>Ilustracija udarnog naglasnog sustava</em>
+          </p>
+        </div>
 
         <p>
           Osim visinskoga naglasnog sustava u hrvatskom jeziku (su)postoji i udarni

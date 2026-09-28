@@ -26,8 +26,8 @@ export default function OProjektuOpisPage() {
           <p><strong>Ratomir Karlović</strong>, mag. inf. (Fakultet informatike Sveučilišta Jurja Dobrile u Puli)</p>
           <p><strong>Dario Kukuljan</strong>, predavač, stručni suradnik (Sveučilišni računski i informacijski centar)</p>
           <p><strong>Doc. dr. sc. Ivan Lorencin</strong> (Fakultet informatike Sveučilišta Jurja Dobrile u Puli)</p>
-          <p><strong>Mia Rovis</strong>, univ. mag. inf. (Fakultet informatike Sveučilišta Jurja Dobrile u Puli)</p>
           <p><strong>Marijela Miličević</strong>, mag. educ. inf. (Fakultet informatike Sveučilišta Jurja Dobrile u Puli)</p>
+          <p><strong>Mia Rovis</strong>, univ. mag. inf. (Fakultet informatike Sveučilišta Jurja Dobrile u Puli)</p>
           <p><strong>Doc. dr. sc. Nikola Tanković</strong> (Fakultet informatike Sveučilišta Jurja Dobrile u Puli)</p>
         </div>
 
@@ -40,16 +40,16 @@ export default function OProjektuOpisPage() {
           <p><strong>Red. prof. Jelena Vlašić Duić</strong> (Odsjek za fonetiku, Filozofski fakultet Sveučilišta u Zagrebu)</p>
         </div>
 
-<div className="tim-slika-container">
-  <Image
-    src="/assets/images/tim.jpg"
-    alt="Tim projekta Hrvatski naglasci na mreži"
-    width={600}
-    height={400}
-    className="tim-slika"
-    priority
-  />
-</div>
+        <div className="tim-slika-container">
+          <Image
+            src="/assets/images/tim.jpg"
+            alt="Tim projekta Hrvatski naglasci na mreži"
+            width={600}
+            height={400}
+            className="tim-slika"
+            priority
+          />
+        </div>
 
       </div>
     </div>

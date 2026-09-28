@@ -333,8 +333,9 @@ main {
     line-height: 0;
 }
 
+/* POVEĆANE KNJIGE */
 .footer .footerlijevo img {
-    height: 70px;
+    height: 90px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -343,7 +344,7 @@ main {
 }
 
 .footer .footerlijevo a:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .footer .footerdesno {
@@ -359,7 +360,7 @@ main {
 }
 
 .footer .footerdesno .footer-logo {
-    height: 60px;
+    height: 70px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -368,7 +369,7 @@ main {
 }
 
 .footer .footerdesno a:hover .footer-logo {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .footer .footerispod {
@@ -378,6 +379,45 @@ main {
     font-size: 14px;
     color: #000000;
     border-top: 1px solid #1157722a;
+}
+
+/* ==================== MOBILNI RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .footer .footersadrzaj {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer .footerlijevo {
+        justify-content: center;
+    }
+
+    .footer .footerdesno {
+        justify-content: center;
+    }
+
+    .footer .footerlijevo img {
+        height: 70px;
+    }
+
+    .footer .footerdesno .footer-logo {
+        height: 55px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 15px 10px 0 10px;
+    }
+
+    .footer .footerlijevo img {
+        height: 60px;
+    }
+
+    .footer .footerdesno .footer-logo {
+        height: 45px;
+    }
 }
 
 /* ==================== SLIKE ==================== */
@@ -3036,4 +3076,928 @@ main {
     .citat-blok {
         max-width: 100%;
     }
+}
+
+/* ==================== SLUŠAM ==================== */
+.bodyslusam {
+  font-size: 20px;
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.naslovna {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content-container.slusam {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.glavni-naslov {
+  text-align: center;
+  color: #28837d;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  width: 100%;
+}
+
+.slika-slusam {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.slika-slusam img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+}
+
+.slusam-intro {
+  width: 100%;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 60px 8vw;
+  text-align: center;
+  border-radius: 14px;
+  background: linear-gradient(
+    to bottom,
+    rgba(110, 220, 210, 0.15),
+    rgba(255, 255, 255, 0.6)
+  );
+  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 25px rgba(110, 220, 210, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slusam-intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #28837d;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-align: center;
+  width: 100%;
+}
+
+.slusam-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Poseban stil za "U izradi" */
+.slusam-intro.u-izradi {
+  border: 2px dashed rgba(42, 163, 154, 0.3);
+}
+
+/* ==================== MOBILNI RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .glavni-naslov {
+    font-size: 2rem;
+  }
+
+  .slusam-intro {
+    padding: 40px 20px;
+    margin: 30px auto;
+  }
+
+  .slusam-intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .slusam-intro p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glavni-naslov {
+    font-size: 1.6rem;
+  }
+
+  .slusam-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .slusam-intro p {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==================== MJESTO, TON I TRAJANJE ==================== */
+.bodyslusam {
+  font-size: 20px;
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.naslovna {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content-container.mjesto {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.glavni-naslov {
+  text-align: center;
+  color: #28837d;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  width: 100%;
+}
+
+.slika-mjesto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.slika-mjesto img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+}
+
+.mjesto-intro {
+  width: 100%;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 60px 8vw;
+  text-align: center;
+  border-radius: 14px;
+  background: linear-gradient(
+    to bottom,
+    rgba(110, 220, 210, 0.15),
+    rgba(255, 255, 255, 0.6)
+  );
+  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 25px rgba(110, 220, 210, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mjesto-intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #28837d;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-align: center;
+  width: 100%;
+}
+
+.mjesto-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Poseban stil za "U izradi" */
+.mjesto-intro.u-izradi {
+  border: 2px dashed rgba(42, 163, 154, 0.3);
+}
+
+/* ==================== MOBILNI RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .glavni-naslov {
+    font-size: 2rem;
+  }
+
+  .mjesto-intro {
+    padding: 40px 20px;
+    margin: 30px auto;
+  }
+
+  .mjesto-intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .mjesto-intro p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glavni-naslov {
+    font-size: 1.6rem;
+  }
+
+  .mjesto-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .mjesto-intro p {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==================== NAGLASCI U UPORABI ==================== */
+.bodyslusam {
+  font-size: 20px;
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.naslovna {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content-container.uporaba {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.glavni-naslov {
+  text-align: center;
+  color: #28837d;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  width: 100%;
+}
+
+.slika-uporaba {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.slika-uporaba img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+}
+
+.uporaba-intro {
+  width: 100%;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 60px 8vw;
+  text-align: center;
+  border-radius: 14px;
+  background: linear-gradient(
+    to bottom,
+    rgba(110, 220, 210, 0.15),
+    rgba(255, 255, 255, 0.6)
+  );
+  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 25px rgba(110, 220, 210, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.uporaba-intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #28837d;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-align: center;
+  width: 100%;
+}
+
+.uporaba-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Poseban stil za "U izradi" */
+.uporaba-intro.u-izradi {
+  border: 2px dashed rgba(42, 163, 154, 0.3);
+}
+
+/* ==================== MOBILNI RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .glavni-naslov {
+    font-size: 2rem;
+  }
+
+  .uporaba-intro {
+    padding: 40px 20px;
+    margin: 30px auto;
+  }
+
+  .uporaba-intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .uporaba-intro p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glavni-naslov {
+    font-size: 1.6rem;
+  }
+
+  .uporaba-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .uporaba-intro p {
+    font-size: 0.95rem;
+  }
+} 
+
+/* ==================== NAGLASCI I ZANAGLASNA DUŽINA ==================== */
+.bodyslusam {
+  font-size: 20px;
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.naslovna {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content-container.duzina {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.glavni-naslov {
+  text-align: center;
+  color: #28837d;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  width: 100%;
+}
+
+.slika-duzina {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.slika-duzina img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+}
+
+.duzina-intro {
+  width: 100%;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 60px 8vw;
+  text-align: center;
+  border-radius: 14px;
+  background: linear-gradient(
+    to bottom,
+    rgba(110, 220, 210, 0.15),
+    rgba(255, 255, 255, 0.6)
+  );
+  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 25px rgba(110, 220, 210, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.duzina-intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #28837d;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-align: center;
+  width: 100%;
+}
+
+.duzina-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Poseban stil za "U izradi" */
+.duzina-intro.u-izradi {
+  border: 2px dashed rgba(42, 163, 154, 0.3);
+}
+
+/* ==================== MOBILNI RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .glavni-naslov {
+    font-size: 2rem;
+  }
+
+  .duzina-intro {
+    padding: 40px 20px;
+    margin: 30px auto;
+  }
+
+  .duzina-intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .duzina-intro p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glavni-naslov {
+    font-size: 1.6rem;
+  }
+
+  .duzina-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .duzina-intro p {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==================== IZGOVARAM ==================== */
+.bodyslusam {
+  font-size: 20px;
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.naslovna {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content-container.izgovaram {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.glavni-naslov {
+  text-align: center;
+  color: #28837d;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  width: 100%;
+}
+
+.slika-izgovaram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.slika-izgovaram img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+}
+
+.izgovaram-intro {
+  width: 100%;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 60px 8vw;
+  text-align: center;
+  border-radius: 14px;
+  background: linear-gradient(
+    to bottom,
+    rgba(110, 220, 210, 0.15),
+    rgba(255, 255, 255, 0.6)
+  );
+  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 25px rgba(110, 220, 210, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.izgovaram-intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #28837d;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-align: center;
+  width: 100%;
+}
+
+.izgovaram-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Poseban stil za "U izradi" */
+.izgovaram-intro.u-izradi {
+  border: 2px dashed rgba(42, 163, 154, 0.3);
+}
+
+/* ==================== MOBILNI RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .glavni-naslov {
+    font-size: 2rem;
+  }
+
+  .izgovaram-intro {
+    padding: 40px 20px;
+    margin: 30px auto;
+  }
+
+  .izgovaram-intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .izgovaram-intro p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glavni-naslov {
+    font-size: 1.6rem;
+  }
+
+  .izgovaram-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .izgovaram-intro p {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==================== SVE 4 PONAVLJAM ==================== */
+.bodyslusam {
+  font-size: 20px;
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.naslovna {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content-container.sva4ponavljam {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.glavni-naslov {
+  text-align: center;
+  color: #28837d;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  width: 100%;
+}
+
+.slika-sva4ponavljam {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.slika-sva4ponavljam img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+}
+
+.sva4ponavljam-intro {
+  width: 100%;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 60px 8vw;
+  text-align: center;
+  border-radius: 14px;
+  background: linear-gradient(
+    to bottom,
+    rgba(110, 220, 210, 0.15),
+    rgba(255, 255, 255, 0.6)
+  );
+  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 25px rgba(110, 220, 210, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sva4ponavljam-intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #28837d;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-align: center;
+  width: 100%;
+}
+
+.sva4ponavljam-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Poseban stil za "U izradi" */
+.sva4ponavljam-intro.u-izradi {
+  border: 2px dashed rgba(42, 163, 154, 0.3);
+}
+
+/* ==================== MOBILNI RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .glavni-naslov {
+    font-size: 2rem;
+  }
+
+  .sva4ponavljam-intro {
+    padding: 40px 20px;
+    margin: 30px auto;
+  }
+
+  .sva4ponavljam-intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .sva4ponavljam-intro p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glavni-naslov {
+    font-size: 1.6rem;
+  }
+
+  .sva4ponavljam-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .sva4ponavljam-intro p {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==================== GLAGOLI U MREŽI ==================== */
+.bodyslusam {
+  font-size: 20px;
+  background: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.naslovna {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content-container.glagoli {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.glavni-naslov {
+  text-align: center;
+  color: #28837d;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  width: 100%;
+}
+
+.slika-glagoli {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.slika-glagoli img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto;
+}
+
+.glagoli-intro {
+  width: 100%;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 60px 8vw;
+  text-align: center;
+  border-radius: 14px;
+  background: linear-gradient(
+    to bottom,
+    rgba(110, 220, 210, 0.15),
+    rgba(255, 255, 255, 0.6)
+  );
+  backdrop-filter: blur(4px);
+  box-shadow: 0 10px 25px rgba(110, 220, 210, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.glagoli-intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #28837d;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-align: center;
+  width: 100%;
+}
+
+.glagoli-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Poseban stil za "U izradi" */
+.glagoli-intro.u-izradi {
+  border: 2px dashed rgba(42, 163, 154, 0.3);
+}
+
+/* ==================== MOBILNI RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .glavni-naslov {
+    font-size: 2rem;
+  }
+
+  .glagoli-intro {
+    padding: 40px 20px;
+    margin: 30px auto;
+  }
+
+  .glagoli-intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .glagoli-intro p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glavni-naslov {
+    font-size: 1.6rem;
+  }
+
+  .glagoli-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .glagoli-intro p {
+    font-size: 0.95rem;
+  }
 }

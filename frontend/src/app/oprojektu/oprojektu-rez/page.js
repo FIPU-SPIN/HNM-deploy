@@ -10,6 +10,9 @@ export default function RezultatiPage() {
         <h2 className="podnaslov">Izlaganja na znanstvenim skupovima</h2>
         
         <div className="rad-citat">
+          Martinović, Blaženka. 2026. „Perception of Accent Placement in Croatian“, The 2026 Seoul International Conference on Linguistics: Theory Returns: Linguistics in the Age of AI, Seul, Južna Koreja, 10. – 11. kolovoza 2026.
+        </div>
+        <div className="rad-citat">
           Martinović, Blaženka. 2026. "Opis i popis analoškoga pomicanje naglasaka prema početku riječi", Jezik od konceptualizacije do primjene – 40. međunarodni znanstveni skup Hrvatskoga društva za primijenjenu lingvistiku, Pula, 25. – 27. lipnja 2026.
         </div>
         <div className="rad-citat">

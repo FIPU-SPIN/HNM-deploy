@@ -13,11 +13,11 @@ export default function Footer() {
         </div>
 
         <div className="footerdesno">
-          <a href="https://ec.europa.eu/regional_policy/home_en" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/images/eunext.jpg" alt="EU" className="footer-logo" />
-          </a>
           <a href="https://ffpu.unipu.hr/" target="_blank" rel="noopener noreferrer">
             <img src="/assets/images/ffpu.png" alt="FFPU" className="footer-logo" />
+          </a>
+          <a href="https://ec.europa.eu/regional_policy/home_en" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/eunext.jpg" alt="EU" className="footer-logo" />
           </a>
         </div>
       </div>

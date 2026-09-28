@@ -5,7 +5,6 @@ import Image from "next/image";
 export default function NaglasciUporabaPage() {
   return (
     <main className="bodyslusam">
-      
 
       <div className="naslovna">
         <div className="content-container uporaba">
@@ -25,10 +24,10 @@ export default function NaglasciUporabaPage() {
         </div>
       </div>
 
-      <div className="uporaba-intro">
-        <h2>Naslov</h2>
+      <div className="uporaba-intro u-izradi">
+        <h2>U izradi</h2>
         <p>
-          Placeholder
+          Ova stranica je trenutno u izradi. Vraćamo se uskoro s novim sadržajem!
         </p>
       </div>
 
