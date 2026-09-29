@@ -113,7 +113,7 @@ export default function DistribucijskaPravilaPage() {
             Drugo pravilo u mnogim se priručnicima navodi restriktivno te se kaže da silazni naglasci mogu biti
             samo na prvom slogu. Uzus i norma pokazuju da silazni naglasci na nepočetnim slogovima nisu iznimka
             ili pogreška, već činjenica koja se sustavno pojavljuje u hrvatskom (standardnom) jeziku
-            (<i>u vlastitim imenima, u posuđenicama, u nekim gramatičkim i tvorbenim oblicima</i>) te nema razloga
+            (u vlastitim imenima, u posuđenicama, u nekim gramatičkim i tvorbenim oblicima) te nema razloga
             imati pravilo koje opovrgava tu činjenicu.
           </p>
           <p>
@@ -132,21 +132,21 @@ export default function DistribucijskaPravilaPage() {
           <h2>Visoki i niski varijetet</h2>
           <p>
             U visokom varijetetu, pogledamo li u suvremene priručnike, nije jednoznačno određeno kada je silazni ton
-            izvan početnoga sloga dopušten. U ponekim rječnicima (<i>u Školskom rječniku Instituta za hrvatski jezik i
-            jezikoslovlje ili Velikom rječniku hrvatskoga standardnog jezika Školske knjige</i>) na leksičkoj se razini
+            izvan početnoga sloga dopušten. U ponekim rječnicima (u <i>Školskom rječniku Instituta za hrvatski jezik i
+            jezikoslovlje</i> ili <i>Velikom rječniku hrvatskoga standardnog jezika</i> Školske knjige) na leksičkoj se razini
             ne dopušta iznimka od strogo zacrtanih raspodjelnih pravila (<i>poljoprìvreda, brodòvlāsnīk</i>), a u ponekim
-            se gramatikama (<i>npr. u Tvorbi riječi S. Babića</i>) dopušta (<i>poljoprȉvreda, brodovlȃsnīk</i>).
+            se gramatikama (npr. u <i>Tvorbi riječi</i> Stjepana Babića) dopušta (<i>poljoprȉvreda, brodovlȃsnīk</i>).
           </p>
           <p>
             Ono što je zajedničko svima jest da se iznimke odnose prije svega na govornu riječ
-            (<i>uzimajući u obzir i broj slogova: nȁ vlāk, ali: na vlȁkovima</i>).
+            (uzimajući u obzir i broj slogova: <i>nȁ vlāk, ali: na vlȁkovima</i>).
           </p>
           <p>
             Pojavljivanje silaznoga naglaska na nepočetnom slogu specifično je za niski varijetet
-            (<i>pogledaj, ne vidim i sl.</i>). Takvi naglasni ostvaraji kod glagola još uvijek nisu opisani
-            kao značajka razgovornoga stila standardnoga jezika, no u drugim slučajevima (<i>npr. studȅnt, dramatȕrg</i>) silazni je naglasak izvan početnoga sloga zabilježen kao razgovorni
+            (<i>pogledaj, ne vidim</i> i sl.). Takvi naglasni ostvaraji kod glagola još uvijek nisu opisani
+            kao značajka razgovornoga stila standardnoga jezika, no u drugim slučajevima (npr. <i>studȅnt, dramatȕrg</i>) silazni je naglasak izvan početnoga sloga zabilježen kao razgovorni
             u suvremenim gramatikama jer se javlja i u visinkome naglasnom sustavu koji je u temelju
-            standardnoga jezika (<i>npr. Hrvatska gramatika E. Barić i skupine autora</i>).
+            standardnoga jezika (npr. <i>Hrvatska gramatika</i> E. Barić i skupine autora).
           </p>
         </div>
 
@@ -170,7 +170,7 @@ export default function DistribucijskaPravilaPage() {
 
           <div className="napomena-akut">
             <strong>Akut</strong> je specifičan uzlazni naglasak koji se pojavljuje u dijalektima
-            (<i>i nije dio standardnoga jezika</i>) i koji se može ostvariti na jednom slogu
+            (i nije dio standardnoga jezika) i koji se može ostvariti na jednom slogu
             (<i>jã, mũl, žãl</i>) pa i na posljednjem slogu riječi
             (<i>vapõr, bidũn, papĩr</i>).
           </div>

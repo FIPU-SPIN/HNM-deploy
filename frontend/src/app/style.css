@@ -778,6 +778,264 @@ main {
     }
 }
 
+/* ==================== AUTH (PRIJAVA / REGISTRACIJA) ==================== */
+.login-page,
+.register-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background: linear-gradient(
+        to bottom,
+        rgba(110, 220, 210, 0.15),
+        rgba(255, 255, 255, 0.6)
+    );
+}
+
+.login-card,
+.register-card {
+    width: 100%;
+    max-width: 440px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 28px;
+    padding: 45px 40px;
+    box-shadow: 0 10px 25px rgba(110, 220, 210, 0.25);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(42, 163, 154, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.login-card h2,
+.register-card h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+    color: #28837d;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+/* FORM GROUP (register) */
+.login-card .form-group,
+.register-card .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* INPUTI */
+.login-card input,
+.register-card input {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #2c3e50;
+    background: #f8fbfb;
+    border: 2px solid rgba(42, 163, 154, 0.18);
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.login-card input::placeholder,
+.register-card input::placeholder {
+    color: #8aa5a2;
+}
+
+.login-card input:focus,
+.register-card input:focus {
+    border-color: #09949b;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(9, 148, 155, 0.12);
+}
+
+/* REQUIRED TEXT */
+.required-text {
+    font-size: 0.75rem;
+    color: #8aa5a2;
+    padding-left: 6px;
+    font-style: italic;
+}
+
+/* ERROR TEXT */
+.error-text {
+    font-size: 0.9rem;
+    color: #d64545;
+    background: rgba(214, 69, 69, 0.08);
+    border-left: 3px solid #d64545;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 0;
+}
+
+/* GUMB */
+.login-card button,
+.register-card button {
+    margin-top: 10px;
+    padding: 14px 20px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-family: inherit;
+    color: #ffffff;
+    background: linear-gradient(135deg, #09949b, #06767c);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 18px rgba(9, 148, 155, 0.25);
+}
+
+.login-card button:hover,
+.register-card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(9, 148, 155, 0.35);
+    background: linear-gradient(135deg, #0aa6ae, #08858c);
+}
+
+.login-card button:active,
+.register-card button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(9, 148, 155, 0.25);
+}
+
+/* LINKOVI ISPOD FORME */
+.login-link,
+.register-link {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #2c3e50;
+    margin-top: 8px;
+}
+
+.login-link a,
+.register-link a {
+    color: #28837d;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.25s ease;
+}
+
+.login-link a:hover,
+.register-link a:hover {
+    color: #09949b;
+    border-bottom-color: #09949b;
+}
+
+/* MOBILNI RESPONSIVE */
+@media (max-width: 480px) {
+    .login-card,
+    .register-card {
+        padding: 30px 22px;
+        border-radius: 22px;
+    }
+
+    .login-card h2,
+    .register-card h2 {
+        font-size: 1.6rem;
+    }
+
+    .login-card input,
+    .register-card input {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+
+    .login-card button,
+    .register-card button {
+        padding: 12px 16px;
+        font-size: 1rem;
+    }
+}
+
+/* ==================== AUTH MODAL (obavijesti) ==================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(6px);
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal {
+    width: 90%;
+    max-width: 420px;
+    background: white;
+    padding: 35px 30px;
+    border-radius: 24px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+    animation: popIn 0.25s ease;
+    text-align: center;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Ikona u modalu */
+.modal-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 12px;
+    line-height: 1;
+}
+
+.modal-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #28837d;
+    margin-bottom: 10px;
+}
+
+.modal-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4b5563;
+    margin-bottom: 22px;
+}
+
+.modal-button {
+    padding: 12px 32px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #09949b, #06767c);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 18px rgba(9, 148, 155, 0.25);
+}
+
+.modal-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(9, 148, 155, 0.35);
+}
+
+/* Varijanta za grešku */
+.modal.error .modal-title {
+    color: #d64545;
+}
+
+.modal.error .modal-button {
+    background: linear-gradient(135deg, #d64545, #b83636);
+    box-shadow: 0 6px 18px rgba(214, 69, 69, 0.25);
+}
+
 /* ==================== REZULTATI STRANICA ==================== */
 .page-rezultati {
     background: linear-gradient(to bottom, rgba(110, 220, 210, 0.15), rgba(255, 255, 255, 0.6));
@@ -2073,6 +2331,16 @@ main {
     box-shadow: 0 4px 12px rgba(42, 163, 154, 0.3);
 }
 
+/* ZRCola gumb centriran */
+.link-container.zrcola-centered {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.link-container.zrcola-centered .zrcola-link-button {
+  display: inline-block;
+}
+
 /* ==================== DISTRIBUCIJSKA PRAVILA ==================== */
 .content-container.distribucijska {
     max-width: 1100px;
@@ -2630,6 +2898,15 @@ main {
     color: #1a4a47;
 }
 
+/* LISTA PROMJENA */
+.promjene-lista li {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #2c3e50;
+}
+
+/* PRIMJER BOX */
 .primjer-box {
     background: rgba(110, 220, 210, 0.1);
     border-left: 4px solid #6edcd2;
@@ -2643,6 +2920,75 @@ main {
     font-size: 1.05rem;
     line-height: 1.8;
     color: #2c3e50;
+}
+
+/* HIPERKOREKCIJA PRIMJERI - vizualno izdvojeni */
+.hiperkorekcija-primjeri {
+    text-align: center;
+    padding: 25px 30px;
+    background: rgba(110, 220, 210, 0.12);
+    border: 1px dashed rgba(42, 163, 154, 0.4);
+    border-left: 4px solid #6edcd2;
+}
+
+.hiperkorekcija-primjeri p {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    color: #28837d;
+}
+
+.hiperkorekcija-primjeri p:last-child {
+    margin-bottom: 0;
+}
+
+/* CENTRIRANI PRIMJERI */
+.centrirani-primjeri {
+    text-align: center;
+}
+
+.centrirani-primjeri p {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    color: #28837d;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.centrirani-primjeri p:last-child {
+    margin-bottom: 0;
+}
+
+/* METATONIJA TABLICA */
+.metatonija-tablica {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 25px 0;
+    padding: 25px 30px;
+    background: rgba(110, 220, 210, 0.1);
+    border-left: 4px solid #6edcd2;
+    border-radius: 16px;
+}
+
+.metatonija-redak {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-size: 1.1rem;
+    color: #28837d;
+    font-weight: 600;
+}
+
+.metatonija-znakovi {
+    min-width: 120px;
+    text-align: right;
+    color: #1a4a47;
+}
+
+.metatonija-rijeci {
+    min-width: 180px;
+    text-align: left;
 }
 
 .primjer {
@@ -2687,6 +3033,18 @@ main {
     .primjer-box {
         padding: 15px 18px;
     }
+
+    .metatonija-redak {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .metatonija-znakovi,
+    .metatonija-rijeci {
+        min-width: auto;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2707,6 +3065,11 @@ main {
     .primjer-box p {
         font-size: 0.95rem;
     }
+
+    .hiperkorekcija-primjeri p,
+    .centrirani-primjeri p {
+        font-size: 1rem;
+    } 
 }
 /* ==================== OSTALO ==================== */
 .kviz-container {

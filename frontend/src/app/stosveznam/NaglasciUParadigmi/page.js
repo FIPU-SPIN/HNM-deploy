@@ -40,25 +40,24 @@ export default function NaglasciUParadigmiPage() {
         <h2>Naglasci u paradigmi</h2>
 
         <p>
-          U morfološkim paradigmama (imeničkoj, glagolskoj, pridjevnoj) naglasak može biti stalan ili se može mijenjati. Naglasku se mijenja ili ton, ili trajanje, ili mjesto. Promijeni li se što od toga, tada ta riječ pripada <b>promjenjivom naglasnom tipu</b> (<i>vrijéme – vrȅmena – vremèna</i>), a ako se ne promijeni, onda riječ pripada <b>nepromjenjivom naglasnom tipu</b> (<i>ljúbav – ljúbavi</i>).
+          U morfološkim paradigmama (imeničkoj, glagolskoj, pridjevnoj) naglasak može biti stalan ili se može mijenjati. Naglasku se mijenja ili ton, ili trajanje, ili mjesto. Promijeni li se što od toga, tada ta riječ pripada <b>promjenljivom naglasnom tipu</b> (<i>vrijéme – vrȅmena – vremèna</i>), a ako se ne promijeni, onda riječ pripada <b>nepromjenljivom naglasnom tipu</b> (<i>ljúbav – ljúbavi</i>).
         </p>
 
         <p>
-          Unutar promjenljivoga tipa događaju se mnoge naglasne promjene koje su predvidljive u sinkroniji (u određenom vremenskom stadiju) i koje su zajedničke brojnim naglasnim jedinicama. Takve su promjene općeparadigmatske i počivaju na tzv. općeparadigmatskim naglasnim pravilima po kojima je takav promjenljivi tip predvidljiv. To su, primjerice, silazni naglasci u V jd. i G mn. imenica, kraćenja u N mn. ili duljenja naglasaka pred skupom sa sonantom. Na većem stupnju apstrakcije sve takve općeparadigmatske promjene mogu biti zanemarene u svrstavanju u <b>promjenljivi</b> ili <b>nepromjenljivi naglasni tip</b>, no mi ih ovdje nećemo zanemarivati i promatrat ćemo takve promjene unutar predvidljivo promjenljivoga tipa radi jasnijega i sustavnijega modelskog prikaza.
+          Unutar promjenljivoga tipa događaju se mnoge naglasne promjene koje su predvidljive u sinkroniji (u određenom vremenskom stadiju) i koje su zajedničke brojnim naglasnim jedinicama. Takve su promjene općeparadigmatske i počivaju na tzv. općeparadigmatskim naglasnim pravilima po kojima je takav promjenljivi tip predvidljiv. To su, primjerice, silazni naglasci u V jd. i G mn. imenica, kraćenja u N mn. ili duljenja naglasaka pred skupom sa sonantom. Na većem stupnju apstrakcije sve takve općeparadigmatske promjene mogu biti zanemarene u svrstavanju u <b>promjenljivom</b> ili <b>nepromjenljivi naglasni tip</b>, no mi ih ovdje nećemo zanemarivati i promatrat ćemo takve promjene unutar predvidljivo promjenljivoga tipa radi jasnijega i sustavnijega modelskog prikaza.
         </p>
 
         <h3>Vrste promjena u paradigmi</h3>
 
         <p>U paradigmi se može promijeniti:</p>
 
-        <ul>
-          <li><b>ton</b> naglaska</li>
-          <li><b>trajanje</b></li>
-          <li><b>ton i trajanje</b></li>
-          <li><b>mjesto</b></li>
-          <li><b>mjesto i ton</b></li>
-          <li><b>mjesto i trajanje</b></li>
-          <li><b>mjesto, ton i trajanje</b></li>
+        <ul className="promjene-lista">
+          <li><b>ton</b> naglaska (<i>rȍk – ròkovi</i>)</li>
+          <li><b>trajanje</b> (<i>prâse – prȁseta</i>)</li>
+          <li><b>ton i trajanje</b> (<i>stȏl – stòlovi</i>)</li>
+          <li><b>mjesto</b> (<i>žìvot – živòti</i>)</li>
+          <li><b>mjesto i trajanje</b> (<i>jùnāk – junáci</i>)</li>
+          <li><b>mjesto, ton i trajanje</b> (<i>vrijéme – vrȅmena – vremèna</i>)</li>
         </ul>
 
         <p>
@@ -66,23 +65,28 @@ export default function NaglasciUParadigmiPage() {
         </p>
 
         <div className="primjer-box">
-          <p><b>Promjenljivi tip:</b> vrijéme - vrȅmena - vremèna</p>
-          <p><b>Nepromjenljivi tip:</b> ljúbav - ljúbavi</p>
+          <p><b>Promjenljivi tip:</b> vrijéme – vrȅmena – vremèna</p>
+          <p><b>Nepromjenljivi tip:</b> ljúbav – ljúbavi</p>
         </div>
 
         <h3>Hiperkorekcija</h3>
 
         <p>
-          Danas je u razgovornom jeziku česta pojava da se prema početku riječi pomiču i oni naglasci koji nisu uzlazni ili tipološki uvjetovani (kao rezultat nedovoljno naučene standardne naglasne norme kod neštokavaca), što je najuočljivije na korpusu prefigiranih glagola (nastalih prefiksacijom): <i>napísati &gt; nȁpisati</i>; <i>zaùstavimo &gt; zȁustavimo</i> i sl. Takvu pojavu nazivamo <b>hiperkorekcijom</b> i u standardu se smatra, zasad, pogreškom. Riječ je o analoškoj pojavi. Na prefiks se, dakle, pomiču samo silazni naglasci: dugosilazni, iza kojega ostaje zanaglasna dužina, i kratkosilazni.
+          Danas je u razgovornom jeziku česta pojava da se prema početku riječi pomiču i oni naglasci koji nisu uzlazni ili tipološki uvjetovani (kao rezultat nedovoljno naučene standardne naglasne norme kod neštokavaca), što je najuočljivije na korpusu prefigiranih glagola (nastalih prefiksacijom). Takvu pojavu nazivamo <b>hiperkorekcijom</b> i u standardu se smatra, zasad, pogreškom. Riječ je o analoškoj pojavi. Na prefiks se, dakle, pomiču samo silazni naglasci: dugosilazni, iza kojega ostaje zanaglasna dužina, i kratkosilazni.
         </p>
+
+        <div className="primjer-box hiperkorekcija-primjeri">
+          <p><i>napísati</i> &gt; <i>nȁpisati</i></p>
+          <p><i>zaùstavimo</i> &gt; <i>zȁustavimo</i></p>
+        </div>
 
         <h3>Retrakcija (povlačenje naglaska)</h3>
 
         <p>
-          Pomicanje naglaska na prethodni slog, prema početku riječi (ali u širem smislu i prema početku govorne riječi) naziva se <b>retrakcija</b> ili povlačenje. Pomiču se silazni naglasci prema početku riječi. U povijesti jezika od tronaglasnoga sustava (<i>̏, ̑, ῀</i>) preko dvonaglasnoga (<i>̏, ̑</i>) nastajao je četveronaglasni sustav (<i>̏, ̑, ˋ, ´</i>), i to tako da su se silazni naglasci pomicali prema početku riječi. Tako su do 14./15. st. nastala dva nova (novoštokavska) naglaska: na mjestu prednaglasnoga kratkog sloga <b>kratkouzlazni</b> (<i>vodȁ &gt; vòda</i>) na mjestu prednaglasnoga dugog sloga <b>dugouzlazni</b> (<i>vīnȍ &gt; víno</i>). Time su iz tih govora nestale prednaglasne dužine, a nastale su nove, zanaglasne, nakon pomicanja dugosilaznoga naglaska (<i>onȏ &gt; ònō</i>).
+          Pomicanje naglaska na prethodni slog, prema početku riječi (ali u širem smislu i prema početku govorne riječi) naziva se <b>retrakcija</b> ili povlačenje. Pomiču se silazni naglasci prema početku riječi. U povijesti jezika od tronaglasnoga sustava (<i> ̏ ,  ̑ , ῀</i>) preko dvonaglasnoga (<i> ̏ ,  ̑</i>) nastajao je četveronaglasni sustav (<i> ̏ ,  ̑ , ˋ , ´</i>), i to tako da su se silazni naglasci pomicali prema početku riječi. Tako su do 14./15. st. nastala dva nova (novoštokavska) naglaska: na mjestu prednaglasnoga kratkog sloga <b>kratkouzlazni</b> (<i>vodȁ &gt; vòda</i>), na mjestu prednaglasnoga dugog sloga <b>dugouzlazni</b> (<i>vīnȍ &gt; víno</i>). Time su iz tih govora nestale prednaglasne dužine, a nastale su nove, zanaglasne, nakon pomicanja dugosilaznoga naglaska (<i>onȏ &gt; ònō</i>).
         </p>
 
-        <div className="primjer-box">
+        <div className="primjer-box centrirani-primjeri">
           <p>vodȁ → vòda</p>
           <p>vīnȍ → víno</p>
           <p>onȏ → ònō</p>
@@ -90,24 +94,36 @@ export default function NaglasciUParadigmiPage() {
 
         <h3>Metatonija i metataksa</h3>
 
-<p>
-  Promjena tona naziva se <b>metatonija</b>, a premještanje naglaska <b>metataksa</b>.
-</p>
+        <p>
+          Promjena tona naziva se <b>metatonija</b>, a premještanje naglaska <b>metataksa</b>.
+        </p>
 
-<p>
-  Promjena tona naziva se metatonija i danas ju nalazimo u primjerima kada silazni metatonira u uzlazni na središnjem slogu: <i>poljoprȉvreda &gt; poljoprìvreda</i>, što je česta praksa u normativnim priručnicima. Premještanje naglaska iste vrste sa sloga na slog naziva se metataksa. Metatonije su se odvijale prema ovim obrascima:
-</p>
+        <p>
+          Promjena tona naziva se metatonija i danas ju nalazimo u primjerima kada silazni metatonira u uzlazni na središnjem slogu: <i>poljoprȉvreda &gt; poljoprìvreda</i>, što je česta praksa u normativnim priručnicima. Premještanje naglaska iste vrste sa sloga na slog naziva se metataksa. Metatonije su se odvijale prema ovim obrascima:
+        </p>
 
-<div className="primjer-box">
-  <p>nogȁ → nòga</p>
-  <p>rūkȁ → rúka</p>
-  <p>junȃk → jùnāk</p>
-  <p>žēnȃ → žénā</p>
-</div>
+        <div className="metatonija-tablica">
+          <div className="metatonija-redak">
+            <span className="metatonija-znakovi">aȁ → àa</span>
+            <span className="metatonija-rijeci">nogȁ → nòga</span>
+          </div>
+          <div className="metatonija-redak">
+            <span className="metatonija-znakovi">āȁ → áa</span>
+            <span className="metatonija-rijeci">rūkȁ → rúka</span>
+          </div>
+          <div className="metatonija-redak">
+            <span className="metatonija-znakovi">aȃ → àā</span>
+            <span className="metatonija-rijeci">junȃk → jùnāk</span>
+          </div>
+          <div className="metatonija-redak">
+            <span className="metatonija-znakovi">āȃ → áā</span>
+            <span className="metatonija-rijeci">žēnȃ → žénā (G mn.)</span>
+          </div>
+        </div>
 
-<p>
-  Kratkouzlazni naglasak nastaje pomicanjem na kratki slog, a dugouzlazni pomicanjem na dugi slog.
-</p>
+        <p>
+          Kratkouzlazni je naglasak nastao pomicanjem silaznoga naglaska na kratki (prednaglasni) slog, a dugouzlazni pomicanjem silaznoga naglaska na dugi (prednaglasni) slog.
+        </p>
 
       </div>
 

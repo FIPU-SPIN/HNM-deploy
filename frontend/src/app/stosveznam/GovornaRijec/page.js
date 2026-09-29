@@ -16,7 +16,7 @@ export default function GovornaRijecPage() {
     setIsLoggedIn(!!token);
   }, []);
 
-  // Funkcija za reprodukciju zvuka
+  // Funkcija za reprodukciju zvuka - S BACKENDA
   const playSound = (soundName) => {
     if (!soundName) return;
     
@@ -26,7 +26,7 @@ export default function GovornaRijecPage() {
       currentAudioRef.current = null;
     }
     
-    const audio = new Audio(`/assets/fix_sounds/${soundName}.wav`);
+    const audio = new Audio(`http://localhost:5000/audio/${soundName}.wav`);
     
     const playPromise = audio.play();
     if (playPromise !== undefined) {
@@ -98,24 +98,11 @@ export default function GovornaRijecPage() {
           Nenaglasnice mogu stajati ispred naglasnice ili iza nje, pa s obzirom na položaj u odnosu na naglasnicu mogu biti prednaglasnice (proklitike) ili zanaglasnice (enklitike). 
         </p>
 
-        <p>Nenaglasnice mogu biti:</p>
-
-        <ul>
-          <li><b>prednaglasnice (proklitike)</b> – dolaze ispred naglašene riječi</li>
-          <li><b>zanaglasnice (enklitike)</b> – dolaze iza naglašene riječi</li>
-        </ul>
-
         <p>
-          <b>Prednaglasnice</b> se zovu još i <b>prislonjenice</b> ili <b>proklitike</b> i dolaze ispred naglašene riječi, a <b>zanaglasnice</b> se nazivaju i <b>naslonjenice</b> ili <b>enklitike</b> te dolaze iza naglašene riječi. Ispred zanaglasnica izbjegavaju se stanke u govoru. Govornu riječ tako može činiti samo jedna jezična riječ, u tom slučaju naglasnica, ili je mogu činiti dvije ili više jezičnih riječi od kojih je jedna naglasnica. U iskazu (rečenici kao komunikacijskoj jedinici) svaka riječ može biti naglašena ako se želi što istaknuti (Ȉšao je i ȉspod i ȉznad mȍsta.).
+          <b>Prednaglasnice</b> se zovu još i <b>prislonjenice</b> ili <b>proklitike</b> i dolaze ispred naglašene riječi, a <b>zanaglasnice</b> se nazivaju i <b>naslonjenice</b> ili <b>enklitike</b> te dolaze iza naglašene riječi. Ispred zanaglasnica izbjegavaju se stanke u govoru. Govornu riječ tako može činiti samo jedna jezična riječ, u tom slučaju naglasnica, ili je mogu činiti dvije ili više jezičnih riječi od kojih je jedna naglasnica. U iskazu (rečenici kao komunikacijskoj jedinici) svaka riječ može biti naglašena ako se želi što istaknuti (<i>Ȉšao je i ȉspod i ȉznad mȍsta.</i>).
         </p>
 
         <h3>Prednaglasnice</h3>
-
-        <ul>
-          <li>prijedlozi: bez, do, iz, na, pod, u, za...</li>
-          <li>veznici: i, a, ali, jer, ako...</li>
-          <li>čestice: ne, ni, pa...</li>
-        </ul>
 
         <p><b>Prednaglasnice su:</b></p>
         <ul>
@@ -126,22 +113,12 @@ export default function GovornaRijecPage() {
 
         <h3>Zanaglasnice</h3>
 
-        <ul>
-          <li>zamjeničke: me, te, ga, je, nas...</li>
-          <li>glagolske: sam, si, je, ćemo, će...</li>
-          <li>čestica: li</li>
-        </ul>
-
         <p><b>Zanaglasnice su:</b></p>
         <ul>
           <li><u>zamjeničke</u> – nenaglašeni oblici ličnih zamjenica i povratne zamjenice (G me, te, ga, je, nas, vas, ih, se; D mi, ti, mu, joj, nam, vam, im, si; A me, te, ga, nj, ju, je, nju, nas, vas, ih, se)</li>
           <li><u>glagolske</u> – nenaglašeni oblici prezenta pomoćnih glagola biti (sam, si, je, smo, ste, su) i htjeti (ću, ćeš, će, ćemo, ćete, će) te nenaglašeni oblici aorista glagola biti, koji služe za tvorbu pogodbenoga načina / kondicionala (bih, bi, bi, bismo, biste, bi)</li>
           <li><u>čestica</u>: li</li>
         </ul>
-
-        <div className="primjer-box">
-          <p>U složenoj rečenici prednaglasnica i zanaglasnica mogu biti ispred naglašene riječi, kao što je u zadnje dvije rečenice "da će"; "ali ne". To mogu biti i zasebne govorne riječi, posebice kada se što ističe, no govor je fluentniji bez stanki.</p>
-        </div>
 
         <h3>Primjeri u rečenici</h3>
 
@@ -162,20 +139,23 @@ export default function GovornaRijecPage() {
           <button className="zvuk-gumb" onClick={() => playSound("1-4-2")}>🔊 Poslušaj</button>
         </div>
 
+        <div className="primjer-box">
+          <p>U složenoj rečenici prednaglasnica i zanaglasnica mogu biti ispred naglašene riječi, kao što je u zadnje dvije rečenice "da će"; "ali ne". To mogu biti i zasebne govorne riječi, posebice kada se što ističe, no govor je fluentniji bez stanki.</p>
+        </div>
+
         <h3>Prokliza i enkliza</h3>
 
         <p>
-<p>
-  U okviru govorne riječi silazni naglasak naglašene (toničke) riječi može se pomicati na prednaglasnicu (proklitiku), i ta se pojava naziva <b>prokliza</b> (npr. na mȏre {`>`} nȁ mōre, u grȃd {`>`} ȕ grād). Suprotno od proklize je <b>enkliza</b>, tj. postojanje zanaglasnica uz naglašenu riječ i u toj se poziciji ne događa pomicanje naglaska. U južnoj je regiji češće nego u istočnoj, a u zapadnoj i sjevernoj vrlo je ograničeno i rijetko.
-</p>        </p>
+          U okviru govorne riječi silazni naglasak naglašene (toničke) riječi može se pomicati na prednaglasnicu (proklitiku), i ta se pojava naziva <b>prokliza</b> (npr. na mȏre {`>`} nȁ mōre, u grȃd {`>`} ȕ grād). Suprotno od proklize je <b>enkliza</b>, tj. postojanje zanaglasnica uz naglašenu riječ i u toj se poziciji ne događa pomicanje naglaska. U južnoj je regiji češće nego u istočnoj, a u zapadnoj i sjevernoj vrlo je ograničeno i rijetko.
+        </p>
         <p>
-        Nekada je u standardnoj normi bilo obvezno pomicanje silaznih naglasaka. Danas je to zastarjelo i regionalno obojeno.
+          Nekada je u standardnoj normi bilo obvezno pomicanje silaznih naglasaka. Danas je to zastarjelo i regionalno obojeno.
         </p>
 
         {/* ZVUK 1.5.3 */}
         <div className="audio-section">
-          <p>Poslušajte stariju i današnju normu:</p>
-          <button className="zvuk-gumb" onClick={() => playSound("1-5-3")}>🔊 Poslušaj</button>
+          <p>Poslušaj stariju normu:</p>
+          <button className="zvuk-gumb" onClick={() => playSound("1-5-3a")}>🔊 Poslušaj</button>
         </div>
 
         <div className="slika-blok">
@@ -219,7 +199,7 @@ export default function GovornaRijecPage() {
         </p>
 
         <p>
-          Iznimno se može ostvariti i zanaglasna dužina:
+          Iznimno se može ostvariti zanaglasna dužina te dugouzlazni naglasak:
         </p>
 
         <div className="primjer-box">
@@ -241,7 +221,7 @@ export default function GovornaRijecPage() {
         <h3>Stanje u suvremenom jeziku</h3>
 
         <p>
-          Danas je pomicanje naglaska obvezno kod negacije <b>ne</b> i u izrazu <i>sa mnom</i>.
+          Danas je pomicanje naglaska obvezno kod negacije <i>ne</i> i u izrazu <i>sa mnom</i>.
         </p>
 
         <p>
@@ -250,8 +230,7 @@ export default function GovornaRijecPage() {
         </p>
 
         <p>
-          U standardu se češće pojavljuje uz zamjenice nego uz druge vrste riječi te
-          češće uz prijedloge nego uz veznike.
+          U standardu se češće pomiče sa zamjenica (<i>za mene, u njoj, u to</i> i sl.) nego s drugih vrsta riječi te češće se pomiče na prijedloge nego na veznike.
         </p>
 
       </div>

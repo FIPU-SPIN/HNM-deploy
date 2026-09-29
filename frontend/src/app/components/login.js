@@ -1,6 +1,5 @@
 "use client";
 import { API_URL } from "@/app/lib/api";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -9,8 +8,9 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [modal, setModal] = useState(null); // { type: "success" | "error", title, text }
   const router = useRouter();
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -18,35 +18,34 @@ export default function Login() {
     try {
       const res = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
-
-      console.log("LOGIN RESPONSE:", data);
 
       if (res.ok) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
         window.dispatchEvent(new Event("authChange"));
-        alert("Uspješna prijava!");
-        router.push("/");
-      } 
-        else {
-          setError(data.error);
-        }
-
-      } catch (err) {
-       console.log(err);
-       alert("Greška na serveru");
+        setModal({
+          type: "success",
+          title: "Uspješna prijava!",
+          text: "Dobrodošao natrag.",
+          onClose: () => router.push("/"),
+        });
+      } else {
+        setError(data.error);
       }
-   };
+    } catch (err) {
+      console.log(err);
+      setModal({
+        type: "error",
+        title: "Greška",
+        text: "Nešto je puklo na serveru. Pokušaj ponovno.",
+      });
+    }
+  };
 
   return (
     <div className="login-page">
@@ -60,7 +59,6 @@ export default function Login() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-
         <input
           type="password"
           placeholder="Lozinka"
@@ -75,8 +73,34 @@ export default function Login() {
         <p className="register-link">
           Nemaš račun? <Link href="/register">Izradi račun</Link>
         </p>
-
       </form>
+
+      {modal && (
+        <div className="modal-overlay" onClick={() => {
+          modal.onClose?.();
+          setModal(null);
+        }}>
+          <div
+            className={`modal ${modal.type === "error" ? "error" : ""}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span className="modal-icon">
+              {modal.type === "success" ? "✅" : "⚠️"}
+            </span>
+            <h3 className="modal-title">{modal.title}</h3>
+            <p className="modal-text">{modal.text}</p>
+            <button
+              className="modal-button"
+              onClick={() => {
+                modal.onClose?.();
+                setModal(null);
+              }}
+            >
+              U redu
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

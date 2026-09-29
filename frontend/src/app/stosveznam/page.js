@@ -26,7 +26,6 @@ export default function StoSveZnamPage() {
       currentAudioRef.current = null;
     }
     
-    // Backend URL - svi zvukovi su sada na backendu u /audio folderu
     const audio = new Audio(`http://localhost:5000/audio/${soundName}.wav`);
     
     const playPromise = audio.play();
@@ -69,15 +68,6 @@ export default function StoSveZnamPage() {
             osnovnih znanja o naglascima i naglasnoj normi, o naglasnim sustavima,
             varijetetima i pravilima u hrvatskome jeziku.
           </p>
-          <p>
-            <strong>Pojašnjenja i vježbe podijeljeni su u nekoliko cjelina:</strong>
-          </p>
-          <div className="teme-lista">
-            <div className="tema-stavka">Naglasni inventar</div>
-            <div className="tema-stavka">Distribucijska pravila</div>
-            <div className="tema-stavka">Govorna riječ s klitikama</div>
-            <div className="tema-stavka">Naglasak u paradigmi</div>
-          </div>
           <p className="zakljucak-tekst">
             <strong>Nakon ove razine spremni ste za uvježbavanje percepcije i produkcije naglasaka.</strong>
           </p>
@@ -171,6 +161,15 @@ export default function StoSveZnamPage() {
         </div>
 
         <p>
+          <i>Trava</i> u visinskom sustavu (govornici iz Zadra, Splita, Vukovara i Osijeka): akustički prikaz
+        </p>
+
+        <div className="audio-section">
+          <p><strong>Poslušajte:</strong></p>
+          <button className="zvuk-gumb" onClick={() => playSound("9.11.b")}>🔊 Poslušaj</button>
+        </div>
+
+        <p>
           Hrvatski standardni jezik opisuje se kao jezik s visinskim naglasnim sustavom
           (tonsko-dinamičkim, melodijskim, <i>engl. pitch-accent language</i>) u kojemu su četiri
           različita naglaska: kratkosilazni, dugosilazni, kratkouzlazni i dugouzlazni te
@@ -197,6 +196,15 @@ export default function StoSveZnamPage() {
           <p className="slika-napomena">
             <em>Ilustracija udarnog naglasnog sustava</em>
           </p>
+        </div>
+
+        <p>
+          <i>Trava</i> u udarnom sustavu (govornici iz Zagreba, Pule i Rijeke): akustički prikaz
+        </p>
+
+        <div className="audio-section">
+          <p><strong>Poslušajte:</strong></p>
+          <button className="zvuk-gumb" onClick={() => playSound("9.11.a")}>🔊 Poslušaj</button>
         </div>
 
         <p>
@@ -257,15 +265,15 @@ export default function StoSveZnamPage() {
       <div className="kviz-cta">
         <h3>🧠 Provjeri svoje znanje</h3>
         <p>
-          Nakon lekcije pokreni kratki kviz i provjeri koliko dobro razumiješ naglasne sustave.
+            Pokreni kratki kviz i odredi kojemu naglasnome sustavu pripada tvoj govor.
         </p>
         {isLoggedIn ? (
           <Link href="/kviz1" className="start-quiz-btn">
-            Pokreni kviz
+            Pokreni kratki kviz i odredi kojemu naglasnome sustavu pripada tvoj govor.
           </Link>
         ) : (
           <button className="start-quiz-btn disabled" disabled>
-            Pokreni kviz
+            Pokreni kviz 
           </button>
         )}
         <br />

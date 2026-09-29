@@ -19,7 +19,7 @@ export default function InventarPage() {
       currentAudioRef.current = null;
     }
 
-    const audio = new Audio(`/assets/fix_sounds/${soundName}.wav`);
+    const audio = new Audio(`http://localhost:5000/audio/${soundName}.wav`);
 
     const playPromise = audio.play();
     if (playPromise !== undefined) {
@@ -35,13 +35,13 @@ export default function InventarPage() {
 
   const playZvukIzZnaka = (znak) => {
     const mapa = {
-      "ȁ": "z1_ks",
-      "ȃ": "z2_ds",
-      "à": "z4_ku",
-      "á": "z3_du",
+      "ȁ": "3.2.2",
+      "â": "4.2.2",
+      "á": "5.2.2",
+      "à": "6.2.2",
+      "ӑ": "3.2.7",
+      "ā": "3.4.3",
       "ã": "z7_ak",
-      "ā": "z5_znd",
-      "ă": "z6_znk",
       "a̍": "z9_ud",
     };
     const soundName = mapa[znak];
@@ -118,10 +118,10 @@ export default function InventarPage() {
             />
           </div>
           <p className="uvodna-definicija">
-  Naglasak je isticanje jednoga sloga u odnosu na druge slogove unutar riječi.
-  <br />
-  Naglasak je istodobni ostvaraj jačine (siline, intenziteta), trajanja (kvantitete) i tona (tonske visine).
-</p>
+            Naglasak je isticanje jednoga sloga u odnosu na druge slogove unutar riječi.
+            <br />
+            Naglasak je istodobni ostvaraj jačine (siline, intenziteta), trajanja (kvantitete) i tona (tonske visine).
+          </p>
         </div>
       </div>
 
@@ -131,9 +131,6 @@ export default function InventarPage() {
             U hrvatskome standardnom jeziku 4 su naglaska. Naglasci u visinskome sustavu mogu biti dugi ili kratki, silazni ili uzlazni.
             Iza naglaska može biti i zanaglasna dužina. U izgovoru se zanaglasna dužina sve više reducira ili nestaje, ostvaruju je
             samo oni koji je i inače imaju u svome polaznom idiomu (nešto više u južnoj regiji nego istočnoj).
-          </p>
-          <p className="napomena-za-zvuk">
-            <strong>📢 Poslušajte kako zvuče u riječima klikom na naglašeni vokal.</strong>
           </p>
         </div>
 
@@ -157,21 +154,21 @@ export default function InventarPage() {
             <tbody>
               <tr>
                 <td className="naglasak-tip">Silazni</td>
-                <td className="zvuk-link" data-zvuk="z1_ks">ȁ</td>
-                <td className="zvuk-link" data-zvuk="z2_ds">ȃ</td>
-                <td className="zvuk-link" data-zvuk="z6_znk">ă</td>
-                <td className="zvuk-link" data-zvuk="z5_znd">ā</td>
+                <td className="zvuk-link" data-zvuk="3.2.2">ȁ</td>
+                <td className="zvuk-link" data-zvuk="4.2.2">â</td>
+                <td className="zvuk-link" data-zvuk="3.2.7">ӑ</td>
+                <td className="zvuk-link" data-zvuk="3.4.3">ā</td>
               </tr>
               <tr>
                 <td className="naglasak-tip">Uzlazni</td>
-                <td className="zvuk-link" data-zvuk="z4_ku">à</td>
-                <td className="zvuk-link" data-zvuk="z3_du">á</td>
+                <td className="zvuk-link" data-zvuk="6.2.2">à</td>
+                <td className="zvuk-link" data-zvuk="5.2.2">á</td>
                 <td></td>
                 <td></td>
               </tr>
             </tbody>
           </table>
-          <p className="tablica-napomena"><em>🔊 Klikom na označene znakove (ȁ, ȃ, à, á, ā, ă) čujete izgovor</em></p>
+          <p className="tablica-napomena"><em>🔊 Klikom na označene vokale (ȁ, â, à, á, ӑ, ā) čujete izgovor.</em></p>
         </div>
 
         <div className="primjeri-rijeci">
@@ -218,7 +215,7 @@ export default function InventarPage() {
             <p className="slika-napomena"></p>
           </div>
 
-          <div className="link-container">
+          <div className="link-container zrcola-centered">
             <a href="https://zrcola.zrc-sazu.si/" target="_blank" rel="noopener noreferrer" className="zrcola-link-button">🔗 ZRCola</a>
           </div>
           <p>Font je razvio Peter Weiss. U njemu se nalaze i naglasni znakovi koji nedostaju u uobičajenim fontovima.</p>
@@ -252,7 +249,7 @@ export default function InventarPage() {
               <strong>📢 Poslušajte izgovor riječi: kiša, sunce, trava, rosa i promotrite sliku.</strong>
               <br />
               <button className="zvuk-gumb praat-zvuk-gumb" data-zvuk="1-2-1" onClick={() => playSound("1-2-1")}>🔊 Poslušaj izgovor</button>
-            </p>
+            </p> 
             <div className="praat-slike-container">
               <Image src="/assets/images/svacetrinaglaska.png" alt="Akustički prikaz naglasaka u programu Praat" width={800} height={500} className="praat-slika" />
               <p className="slika-napomena"></p>
@@ -261,7 +258,7 @@ export default function InventarPage() {
               </div>
             </div>
 
-            <p className="praat-opis">Slika prikazuje tijek tona, tijek intenziteta i trajanje vokala u riječima kiša, sunce, trava i rosa. Prve dvije riječi izgovorene su sa silaznim naglaskom, a druge dvije s uzlaznim naglaskom na prvom slogu; prva i zadnja izgovorene su s kratkim naglašenim vokalom, a druga i treća s dugim. Riječi je izgovorila spikerica čiji je osnovni ton oko 170 Hz, a pripada rasponu tona koji nazivamo altom. Okomitim crtama obilježeni su početak i kraj naglašenoga i zanaglasnoga sloga u riječima.</p>
+            <p className="praat-opis">Slika prikazuje tijek tona, tijek intenziteta i trajanje vokala u riječima <i>kiša, sunce, trava, rosa</i>. Prve dvije riječi izgovorene su sa silaznim naglaskom, a druge dvije s uzlaznim naglaskom na prvom slogu; prva i zadnja izgovorene su s kratkim naglašenim vokalom, a druga i treća s dugim. Riječi je izgovorila spikerica čiji je osnovni ton oko 170 Hz, a pripada rasponu tona koji nazivamo altom. Okomitim crtama obilježeni su početak i kraj naglašenoga i zanaglasnoga sloga u riječima.</p>
           </div>
         </div>
 
