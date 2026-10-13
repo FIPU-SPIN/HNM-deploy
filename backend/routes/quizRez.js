@@ -20,26 +20,29 @@ function auth(req, res, next) {
   }
 }
 
-  const resultTextMap = {
+const resultTextMap = {
   visinski: {
     text: "Tvoj je naglasni sustav: visinski",
-    description: "Opis visinskog sustava..."
+    description:
+      "Visinski naglasni sustav razlikuje četiri naglaska (kratkosilazni, dugosilazni, kratkouzlazni, dugouzlazni) te zanaglasnu dužinu i kračinu. Uzlazni i silazni tonovi su relevantni.",
   },
   udarni: {
     text: "Tvoj je naglasni sustav: udarni",
-    description: "Opis udarnog sustava..."
+    description:
+      "Udarni naglasni sustav razlikuje samo mjesto naglaska u riječi. Nema razlike u tonu ni u trajanju naglašenog sloga.",
   },
   miješani: {
     text: "Tvoj je naglasni sustav: miješani",
-    description: "Opis miješanog sustava..."
-  }
-  };
+    description:
+      "Miješani (prijelazni) naglasni sustav nastaje dodirom dvaju sustava, najčešće migracijama govornika. Sadrži značajke i visinskoga i udarnoga sustava.",
+  },
+};
 
 router.post("/", auth, async (req, res) => {
   try {
     const { quizId, answers } = req.body;
 
-    //pitanja iz baze
+    // Dohvati pitanja iz baze
     const questions = await QuizQuestion.find({ quizId });
 
     const totals = {
@@ -48,30 +51,27 @@ router.post("/", auth, async (req, res) => {
       miješani: 0,
     };
 
-    // računanje bodova
+    // Računanje bodova
     for (const question of questions) {
       const key = question.id || question._doc?.id;
-
       const answer = answers?.[key];
 
       if (answer === undefined || answer === null) continue;
 
       const score = question.scoring?.[answer];
-
       if (!score) continue;
 
       Object.entries(score).forEach(([system, value]) => {
-        totals[system] += value;
+        if (totals[system] !== undefined) {
+          totals[system] += value;
+        }
       });
-    } 
+    }
 
-    // određivanje naglaska
+    // Određivanje naglasnog sustava
     let accentSystem = "miješani";
 
-    if (
-      totals.visinski > totals.udarni &&
-      totals.visinski > totals.miješani
-    ) {
+    if (totals.visinski > totals.udarni && totals.visinski > totals.miješani) {
       accentSystem = "visinski";
     } else if (
       totals.udarni > totals.visinski &&
@@ -80,8 +80,8 @@ router.post("/", auth, async (req, res) => {
       accentSystem = "udarni";
     }
 
-    //spremi rezultat
-    const result = await QuizResult.create({
+    // Spremi rezultat
+    await QuizResult.create({
       userId: req.userId,
       quizId,
       answers,
@@ -89,15 +89,16 @@ router.post("/", auth, async (req, res) => {
       totals,
     });
 
-    // vrati frontendu samo finalni rezultat
+    // Vrati frontendu finalni rezultat
     res.status(201).json({
-    accentSystem,
-    resultText: resultTextMap[accentSystem],
-  });
-
+      accentSystem,
+      totals,
+      resultText: resultTextMap[accentSystem],
+    });
   } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
-  });
+    console.error("Greška u quizRez:", err);
+    res.status(500).json({ message: err.message });
+  }
+});
 
 module.exports = router;

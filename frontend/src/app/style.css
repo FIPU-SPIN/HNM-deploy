@@ -4364,3 +4364,128 @@ main {
     font-size: 0.95rem;
   }
 }
+
+/* ==================== BODOVI U KVIZU ==================== */
+.score-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  font-size: 16px;
+  background: #eef8ff;
+  border: 1px solid rgba(9, 148, 155, 0.15);
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.score-display strong {
+  color: #09949b;
+  font-size: 18px;
+}
+
+.score-breakdown {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.lamp-inline {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+/* ==================== ZAVRŠNI EKRAN ==================== */
+.finished-points {
+  margin: 20px 0;
+  padding: 16px;
+  background: #f0fdf4;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.finished-points strong {
+  color: #09949b;
+  font-size: 1.2rem;
+}
+
+.points-breakdown {
+  color: #6b7280;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.finished-description {
+  margin: 16px 0;
+  color: #374151;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ==================== AUDIO GRID KVIZ ==================== */
+.audio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.audio-item {
+  display: flex;
+  justify-content: center;
+}
+
+.play-audio-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #09949b;
+  background: #ffffff;
+  border: 2px solid #09949b;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 8px rgba(9, 148, 155, 0.12);
+  width: 100%;
+  max-width: 180px;
+}
+
+.play-audio-btn:hover {
+  background: linear-gradient(135deg, #09949b, #4fb2b7);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(9, 148, 155, 0.3);
+}
+
+.play-audio-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(9, 148, 155, 0.25);
+}
+
+.play-audio-btn::before {
+  content: "🔊";
+  font-size: 0.95rem;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .audio-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .play-audio-btn {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    max-width: 100%;
+  }
+}

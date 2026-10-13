@@ -8,10 +8,24 @@ const quizResultSchema = new mongoose.Schema({
   },
 
   quizId: String,
+
   answers: {
-  type: mongoose.Schema.Types.Mixed,
-  required: true,
-    },
+    type: mongoose.Schema.Types.Mixed,
+    required: true,
+  },
+
+  accentSystem: {
+    type: String,
+    enum: ["visinski", "udarni", "miješani"],
+    default: "miješani",
+  },
+
+  totals: {
+    visinski: { type: Number, default: 0 },
+    udarni: { type: Number, default: 0 },
+    miješani: { type: Number, default: 0 },
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,
