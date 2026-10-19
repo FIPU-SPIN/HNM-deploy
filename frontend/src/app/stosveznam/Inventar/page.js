@@ -276,9 +276,9 @@ export default function InventarPage() {
       {/* KVIZ CTA */}
       <div className="kviz-cta">
         <h3>🧠 Provjeri svoje znanje</h3>
-        <p>
-          Nakon lekcije pokreni kratki kviz i provjeri koliko dobro razumiješ naglasne sustave.
-        </p>
+<p>
+  Nakon lekcije pokreni kviz i provjeri svoje znanje o naglasnome inventaru i znakovlju.
+</p>
         {isLoggedIn ? (
           <Link href="/kviz4" className="start-quiz-btn">
             Pokreni kviz

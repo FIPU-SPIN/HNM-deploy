@@ -8,17 +8,13 @@ const QuizQuestion = require("../quiz_models");
 async function run() {
   try {
     console.log("Spajanje na Mongo...");
-
     await mongoose.connect(process.env.MONGO_URI);
-
     console.log("Mongo spojen ✔");
 
     await QuizQuestion.deleteMany({ quizId: "kviz4" });
-
     console.log("Stari kviz obrisan");
 
     const kviz = [
-
       /* ================= INTRO ================= */
       {
         quizId: "kviz4",
@@ -39,12 +35,13 @@ async function run() {
         voices: [
           { label: "máčak", audio: "/audio/z10_a.wav" },
           { label: "mȁčka", audio: "/audio/z10_b.wav" },
-          { label: "mȃjka", audio: "/audio/z10_c.wav" },
+          { label: "mājka", audio: "/audio/z10_c.wav" },
           { label: "măndărínă", audio: "/audio/z10_d.wav" },
         ],
-        options: ["máčak", "mȁčka", "mȃjka", "măndărínă"],
-        correct: "1",
-        lamp: "Točan odgovor je mȁčka. Kratki naglasak je kratkosilazni (ȁ).",
+        options: ["máčak", "mȁčka", "mājka", "măndărínă"],
+        correct: "mȁčka",
+        lamp:
+          "Točan odgovor je mȁčka. Kratki naglasak je kratkosilazni (ȁ).",
       },
 
       /* ================= Q2a ================= */
@@ -55,7 +52,7 @@ async function run() {
         id: "q2a",
         question: "Koji naglasak ima riječ kȉša?",
         options: ["kratkosilazni", "dugosilazni", "kratkouzlazni", "dugouzlazni"],
-        correct: "0",
+        correct: "kratkosilazni",
         lamp: "Kȉša ima kratkosilazni naglasak.",
       },
 
@@ -67,7 +64,7 @@ async function run() {
         id: "q2b",
         question: "Koji naglasak ima riječ sȗnce?",
         options: ["kratkosilazni", "dugosilazni", "kratkouzlazni", "dugouzlazni"],
-        correct: "1",
+        correct: "dugosilazni",
         lamp: "Sȗnce ima dugosilazni naglasak.",
       },
 
@@ -79,7 +76,7 @@ async function run() {
         id: "q2c",
         question: "Koji naglasak ima riječ tráva?",
         options: ["kratkosilazni", "dugosilazni", "kratkouzlazni", "dugouzlazni"],
-        correct: "3",
+        correct: "dugouzlazni",
         lamp: "Tráva ima dugouzlazni naglasak.",
       },
 
@@ -91,7 +88,7 @@ async function run() {
         id: "q2d",
         question: "Koji naglasak ima riječ ròsa?",
         options: ["kratkosilazni", "dugosilazni", "kratkouzlazni", "dugouzlazni"],
-        correct: "2",
+        correct: "kratkouzlazni",
         lamp: "Ròsa ima kratkouzlazni naglasak.",
       },
 
@@ -103,7 +100,7 @@ async function run() {
         id: "q3a",
         question: "Koji znak označava kratkosilazni naglasak?",
         options: ["ȁ", "ȃ", "à", "á", "a̍", "ã", "ă"],
-        correct: "0",
+        correct: "ȁ",
         lamp: "Kratkosilazni naglasak se označava znakom ȁ.",
       },
 
@@ -115,7 +112,7 @@ async function run() {
         id: "q3b",
         question: "Koji znak označava udarni naglasak?",
         options: ["ȁ", "ȃ", "à", "á", "a̍", "ã", "ă"],
-        correct: "4",
+        correct: "a̍",
         lamp: "Udarni naglasak se označava znakom a̍.",
       },
 
@@ -127,7 +124,7 @@ async function run() {
         id: "q3c",
         question: "Koji znak označava dugosilazni naglasak?",
         options: ["ȁ", "ȃ", "à", "á", "a̍", "ã", "ă"],
-        correct: "1",
+        correct: "ȃ",
         lamp: "Dugosilazni naglasak se označava znakom ȃ.",
       },
 
@@ -139,7 +136,7 @@ async function run() {
         id: "q3d",
         question: "Koji znak označava dugouzlazni naglasak?",
         options: ["ȁ", "ȃ", "à", "á", "a̍", "ã", "ă"],
-        correct: "3",
+        correct: "á",
         lamp: "Dugouzlazni naglasak se označava znakom á.",
       },
 
@@ -151,7 +148,7 @@ async function run() {
         id: "q3e",
         question: "Koji znak označava kratkouzlazni naglasak?",
         options: ["ȁ", "ȃ", "à", "á", "a̍", "ã", "ă"],
-        correct: "2",
+        correct: "à",
         lamp: "Kratkouzlazni naglasak se označava znakom à.",
       },
 
@@ -163,7 +160,7 @@ async function run() {
         id: "q3f",
         question: "Koji znak označava akut?",
         options: ["ȁ", "ȃ", "à", "á", "a̍", "ã", "ă"],
-        correct: "5",
+        correct: "ã",
         lamp: "Akut se označava znakom ã.",
       },
 
@@ -175,20 +172,20 @@ async function run() {
         id: "q3g",
         question: "Koji znak označava kračinu?",
         options: ["ȁ", "ȃ", "à", "á", "a̍", "ã", "ă"],
-        correct: "6",
+        correct: "ă",
         lamp: "Kračina se označava znakom ă.",
       },
 
-            /* ================= Q4 - IPA za sve riječi ================= */
+      /* ================= Q4 - IPA za sve riječi ================= */
       {
         quizId: "kviz4",
         order: 14,
         type: "select",
         id: "q4_masta",
-        question: "Koji je točan IPA zapis za riječ màšta?",
-        options: ["màšta", "mâšta", "măšta", "mâ:šta", "mă:šta"],
-        correct: "3",
-        lamp: "IPA zapis za màšta je mâ:šta.",
+        question: "Koji je točan IPA zapis za riječ mȁšta?",
+        options: ["mȁšta", "mâšta", "măšta", "mâ:šta", "mă:šta"],
+        correct: "mâ:šta",
+        lamp: "IPA zapis za mȁšta je mâ:šta.",
       },
       {
         quizId: "kviz4",
@@ -197,7 +194,7 @@ async function run() {
         id: "q4_vatra",
         question: "Koji je točan IPA zapis za riječ vȁtra?",
         options: ["vȁtra", "vâtra", "vătra", "vâ:tra", "vă:tra"],
-        correct: "3",
+        correct: "vâ:tra",
         lamp: "IPA zapis za vȁtra je vâ:tra.",
       },
       {
@@ -207,7 +204,7 @@ async function run() {
         id: "q4_lava",
         question: "Koji je točan IPA zapis za riječ láva?",
         options: ["láva", "lâva", "lăva", "lâ:va", "lă:va"],
-        correct: "3",
+        correct: "lâ:va",
         lamp: "IPA zapis za láva je lâ:va.",
       },
       {
@@ -217,7 +214,7 @@ async function run() {
         id: "q4_bajka",
         question: "Koji je točan IPA zapis za riječ bȃjka?",
         options: ["bȃjka", "bâjka", "băjka", "bâ:jka", "bă:jka"],
-        correct: "3",
+        correct: "bâ:jka",
         lamp: "IPA zapis za bȃjka je bâ:jka.",
       },
 
@@ -227,10 +224,11 @@ async function run() {
         order: 18,
         type: "multi-select",
         id: "q5",
-        question: "Koje su riječi, prema kretanju tona, izgovorene uzlaznim naglascima? (vidi sliku)",
+        question:
+          "Koje su riječi, prema kretanju tona, izgovorene uzlaznim naglascima? (vidi sliku)",
         image: "/assets/images/Ton.png",
         options: ["more", "glava", "dobar", "danas"],
-        correct: [1, 3],
+        correct: ["glava", "danas"],
         lamp: "Glava i danas izgovorene su uzlaznim naglascima.",
       },
 
@@ -243,7 +241,7 @@ async function run() {
         question: "Koje su riječi izgovorene dugim naglascima? (vidi sliku)",
         image: "/assets/images/Ton.png",
         options: ["more", "glava", "dobar", "danas"],
-        correct: [0, 1],
+        correct: ["more", "glava"],
         lamp: "More i glava izgovorene su dugim naglascima.",
       },
 
@@ -253,9 +251,10 @@ async function run() {
         order: 20,
         type: "select",
         id: "q7a",
-        question: "Kako je naglašena riječ čovjek na Hrvatskome jezičnom portalu (HJP)?",
+        question:
+          "Kako je naglašena riječ čovjek na Hrvatskome jezičnom portalu (HJP)?",
         options: ["čȍvjek", "čòvjek"],
-        correct: "0",
+        correct: "čȍvjek",
         lamp: "HJP bilježi čȍvjek (silazni naglasak).",
       },
 
@@ -265,16 +264,16 @@ async function run() {
         order: 21,
         type: "select",
         id: "q7b",
-        question: "Kako je naglašena riječ čovjek u Školskome rječniku hrvatskoga jezika (ŠRHJ)?",
+        question:
+          "Kako je naglašena riječ čovjek u Školskome rječniku hrvatskoga jezika (ŠRHJ)?",
         options: ["čȍvjek", "čòvjek"],
-        correct: "1",
-        lamp: "ŠRHJ bilježi čòvjek (uzlazni naglasak). Danas je uzusno i normativno čòvjek.",
+        correct: "čòvjek",
+        lamp:
+          "ŠRHJ bilježi čòvjek (uzlazni naglasak). Danas je uzusno i normativno čòvjek. U različitim priručnicima možete pronaći različite leksičke naglaske riječi, no to nije neobična pojava jer se uzimaju u obzir i uzusni naglasci ili oni koji su u određenome vremenu smatrani sustavnijima.",
       },
-
     ];
 
     const result = await QuizQuestion.insertMany(kviz);
-
     console.log("✔ KVIZ 4 UBACEN:", result.length, "pitanja");
   } catch (err) {
     console.error("Greška:", err);

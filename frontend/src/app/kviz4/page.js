@@ -38,5 +38,13 @@ export default function Kviz4Page() {
     );
   }
 
-  return <Quiz steps={kviz} />;
+  return (
+    <Quiz
+      steps={kviz}
+      quizId="kviz4"
+      returnUrl="/stosveznam/Inventar"
+      requireCorrectToAdvance={true}
+      hideAccentSystem={true}
+    />
+  );
 }

@@ -1,10 +1,9 @@
 "use client";
 import { API_URL } from "@/app/lib/api";
-
 import { useEffect, useState } from "react";
 import Quiz from "../components/Quiz";
 
-export default function Page() {
+export default function Kviz2Page() {
   const [kviz, setKviz] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -13,7 +12,6 @@ export default function Page() {
       .then((res) => res.json())
       .then((data) => {
         const sorted = data.sort((a, b) => a.order - b.order);
-
         setKviz(sorted);
         setLoading(false);
       })
@@ -23,9 +21,15 @@ export default function Page() {
       });
   }, []);
 
-  if (loading) {
-    return <p>Učitavanje kviza...</p>;
-  }
+  if (loading) return <div className="quiz-loading"><p>Učitavanje kviza...</p></div>;
+  if (!kviz.length) return <div className="quiz-error"><p>Nema pitanja za ovaj kviz.</p></div>;
 
-  return <Quiz steps={kviz} />;
+  return (
+    <Quiz
+      steps={kviz}
+      quizId="kviz2"
+      returnUrl="/stosveznam/Govorna-Rijec"
+      hideAccentSystem={true}
+    />
+  );
 }

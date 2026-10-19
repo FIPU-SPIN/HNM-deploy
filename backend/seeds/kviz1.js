@@ -80,7 +80,7 @@ async function run() {
           "južna Hrvatska",
           "istočna Hrvatska",
         ],
-        correct: "1",
+        correct: "zapadna Hrvatska",
         lamp: "Govornik 1 dolazi iz zapadne Hrvatske (Pula).",
       },
 
@@ -99,7 +99,7 @@ async function run() {
           "južna Hrvatska",
           "istočna Hrvatska",
         ],
-        correct: "0",
+        correct: "sjeverna Hrvatska",
         lamp: "Govornik 2 dolazi iz sjeverne Hrvatske (Zagreb).",
       },
 
@@ -118,7 +118,7 @@ async function run() {
           "južna Hrvatska",
           "istočna Hrvatska",
         ],
-        correct: "3",
+        correct: "istočna Hrvatska",
         lamp: "Govornica 3 dolazi iz istočne Hrvatske (Osijek).",
       },
 
@@ -137,7 +137,7 @@ async function run() {
           "južna Hrvatska",
           "istočna Hrvatska",
         ],
-        correct: "2",
+        correct: "južna Hrvatska",
         lamp:
           "Govornica 4 dolazi iz južne Hrvatske (Dubrovnik). Govornici iz Dubrovnika i Osijeka u govoru imaju četiri naglaska, a govornici iz Pule i Zagreba najčešće jedan.",
       },
