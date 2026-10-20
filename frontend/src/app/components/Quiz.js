@@ -25,7 +25,28 @@ export default function Quiz({
   const typingTimer = useRef(null);
   const audioRefs = useRef({});
 
-  const current = steps[step];
+  const groupedSteps = [];
+  let currentGroup = null;
+
+  steps.forEach((q) => {
+    if (quizId === "kviz1" && ["q3a", "q3b", "q3c", "q3d"].includes(q.id)) {
+      if (!currentGroup) {
+        currentGroup = { isMatchingGroup: true, items: [q] };
+        groupedSteps.push(currentGroup);
+      } else {
+        currentGroup.items.push(q);
+      }
+    } else {
+      groupedSteps.push(q);
+      currentGroup = null;
+    }
+  });
+
+  const current = groupedSteps[step];
+  
+  const isQLocked = current ? (lockedQuestions[current.id] || false) : false;
+  const hasCorrectAnswer = current && current.correct !== null && current.correct !== undefined && current.correct !== "";
+  const hasOptions = current && current.options && current.options.length > 0;
 
   const [correctCount, setCorrectCount] = useState(0);
 
@@ -134,6 +155,11 @@ export default function Quiz({
     if (lockedQuestions[id]) return; 
     setAnswers((prev) => ({ ...prev, [id]: value }));
     setLockedQuestions((prev) => ({ ...prev, [id]: true }));
+    
+    const question = steps.find(s => s.id === id);
+    if (question?.lamp) {
+      setTimeout(() => setLamp(question.lamp), 350);
+    }
   };
 
   const handleMultiSelect = (id, option) => {
@@ -175,6 +201,7 @@ export default function Quiz({
           const allFilled = Array.from({ length: sentence.parts }).every((_, i) => (sentenceAns[i] || "").trim().length > 0);
           if (allFilled) {
             setLockedRows(prevLocked => ({ ...prevLocked, [`${id}-${sentenceIndex}`]: true }));
+            if (question.lamp) setLamp(question.lamp);
           }
         }, 5000); 
       }
@@ -194,7 +221,15 @@ export default function Quiz({
   };
 
   const handleNext = () => {
-    setLockedQuestions(prev => ({ ...prev, [current.id]: true }));
+    setLamp(null); 
+    
+    if (current.isMatchingGroup) {
+       current.items.forEach(q => {
+          setLockedQuestions(prev => ({ ...prev, [q.id]: true }));
+       });
+    } else {
+      setLockedQuestions(prev => ({ ...prev, [current.id]: true }));
+    }
     
     if (current.type === "segment-input") {
       const allLocked = {};
@@ -208,7 +243,16 @@ export default function Quiz({
   };
 
   const submitQuiz = async () => {
-    setLockedQuestions(prev => ({ ...prev, [current.id]: true }));
+    setLamp(null);
+    
+    if (current.isMatchingGroup) {
+       current.items.forEach(q => {
+          setLockedQuestions(prev => ({ ...prev, [q.id]: true }));
+       });
+    } else {
+      setLockedQuestions(prev => ({ ...prev, [current.id]: true }));
+    }
+    
     if (current.type === "segment-input") {
       const allLocked = {};
       current.sentences?.forEach((_, si) => {
@@ -231,14 +275,14 @@ export default function Quiz({
   };
 
   const requiresAnswer = () => {
+    if (current.isMatchingGroup) {
+       return current.items.some(q => !answers[q.id]);
+    }
     if (current.type === "select" && !answers[current.id]) return true;
     if (current.type === "multi-select" && (!answers[current.id] || answers[current.id].length === 0)) return true;
-    if (current.type === "audio_select" && current.options && current.options.length > 0 && !answers[current.id]) return true;
+    if (current.type === "audio_select" && hasCorrectAnswer && !answers[current.id]) return true;
     return false;
   };
-
-  const hasCorrectAnswer = current.correct !== null && current.correct !== undefined && current.correct !== "";
-  const isQLocked = lockedQuestions[current.id];
 
   if (finished) {
     const percentage = totalPerception > 0 ? Math.round((correctCount / totalPerception) * 100) : 0;
@@ -270,7 +314,7 @@ export default function Quiz({
       <div className="quiz-content">
         <div className="quiz-top-bar">
           <div className="progress-bar">
-            <div className="progress-fill" style={{ width: `${((step + 1) / steps.length) * 100}%` }} />
+            <div className="progress-fill" style={{ width: `${((step + 1) / groupedSteps.length) * 100}%` }} />
           </div>
           {totalPerception > 0 && (
             <div className="scoreboard">
@@ -281,84 +325,67 @@ export default function Quiz({
         </div>
 
         <div className="quiz-card">
-          {/* POSEBNI DIZAJN ZA Q10 */}
-          {current.id === "q10" ? (
-            <div className="q10-container">
-              <p className="question-text" dangerouslySetInnerHTML={{ __html: current.question }} />
-              
-              <div className="q10-grid">
-                {[0, 2, 4, 6].map((pairIndex, i) => {
-                  const pairA = current.voices[pairIndex];
-                  const pairB = current.voices[pairIndex + 1];
-                  
-                  const optA = pairA.label.split(")")[0].trim(); 
-                  const optB = pairB.label.split(")")[0].trim(); 
-                  
-                  const isASelected = answers[current.id]?.includes(optA);
-                  const isBSelected = answers[current.id]?.includes(optB);
+          
+          {current.isMatchingGroup ? (
+             <div className="matching-container">
+                <p className="question-text" style={{ marginBottom: "20px", fontSize: "1.1rem", fontWeight: "bold" }}>
+                  Poslušajte rečenice Ponovo je zasjalo sunce. Nakon kiše pojavi se duga. Iz koje regije dolazi svaki govornik?
+                </p>
 
-                  const isACorrect = Array.isArray(current.correct) && current.correct.some(c => c === optA || c === `${optA})`);
-                  const isBCorrect = Array.isArray(current.correct) && current.correct.some(c => c === optB || c === `${optB})`);
+                <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                   {current.items.map((q) => {
+                      const isLocked = lockedQuestions[q.id];
+                      const correctAnswerText = q.correct;
 
-                  const isALocked = lockedMultiOptions[`${current.id}-${optA}`] || isQLocked;
-                  const isBLocked = lockedMultiOptions[`${current.id}-${optB}`] || isQLocked;
+                      return (
+                        <div key={q.id} style={{ display: "flex", alignItems: "center", gap: "16px", background: "#f9fbfc", padding: "16px", borderRadius: "12px", border: "1px solid #e5e9ef" }}>
+                           
+                           <div style={{ flex: 1, minWidth: "150px" }}>
+                              <audio ref={el => audioRefs.current[q.id] = el} src={`${API_URL}${q.voices[0].audio}`} preload="auto" />
+                              <button 
+                                onClick={() => playAudio(q.id)}
+                                className="play-audio-btn"
+                                style={{ width: "100%" }}
+                              >
+                                🔊 {q.voices[0].label}
+                              </button>
+                           </div>
 
-                  const isAWrong = isALocked && isASelected && !isACorrect;
-                  const isBWrong = isBLocked && isBSelected && !isBCorrect;
+                           <div style={{ flex: 2 }}>
+                              <select 
+                                 value={answers[q.id] || ""}
+                                 onChange={(e) => handleSelect(q.id, e.target.value)}
+                                 disabled={isLocked}
+                                 style={{ 
+                                    width: "100%", 
+                                    padding: "12px", 
+                                    borderRadius: "8px", 
+                                    border: isLocked ? (answers[q.id] === correctAnswerText ? "2px solid #16a34a" : "2px solid #dc2626") : "2px solid #e0e7ef",
+                                    backgroundColor: isLocked ? (answers[q.id] === correctAnswerText ? "#f0fdf4" : "#fef2f2") : "#ffffff",
+                                    color: isLocked ? (answers[q.id] === correctAnswerText ? "#15803d" : "#b91c1c") : "#1f2937",
+                                    fontWeight: "600",
+                                    outline: "none"
+                                 }}
+                              >
+                                 <option value="">-- Odaberi regiju --</option>
+                                 {q.options.map((opt, j) => (
+                                    <option key={j} value={opt}>{opt}</option>
+                                 ))}
+                              </select>
+                           </div>
 
-                  return (
-                    <div key={i} className="q10-row">
-                      <div className="q10-label">Par {i + 1}:</div>
-                      
-                      <div className="q10-buttons">
-                        <div style={{ display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
-                          
-                          <audio ref={el => audioRefs.current[`q10_a_${i}`] = el} src={`${API_URL}${pairA.audio}`} preload="auto" />
-                          
-                          <button 
-                            className="q10-play-btn"
-                            onClick={() => playAudio(`q10_a_${i}`)}
-                          >
-                            🔊 Poslušaj a
-                          </button>
-                          <div 
-                            className={`q10-btn ${isASelected && !isALocked ? "active" : ""} ${isALocked && isACorrect && isASelected ? "correct" : ""} ${isAWrong ? "wrong" : ""}`}
-                            onClick={() => handleMultiSelect(current.id, optA)}
-                          >
-                            <span className="q10-text">{pairA.label}</span>
-                            {isALocked && isACorrect && isASelected && <span className="opt-mark">✓</span>}
-                            {isAWrong && <span className="opt-mark">✗</span>}
-                          </div>
+                           <div style={{ width: "30px", textAlign: "center" }}>
+                              {isLocked && answers[q.id] === correctAnswerText && <span style={{ color: "#16a34a", fontSize: "1.2rem" }}>✓</span>}
+                              {isLocked && answers[q.id] !== correctAnswerText && <span style={{ color: "#dc2626", fontSize: "1.2rem" }}>✗</span>}
+                           </div>
+
                         </div>
-
-                        <div style={{ display: "flex", flexDirection: "column", gap: "8px", flex: 1 }}>
-                          
-                          <audio ref={el => audioRefs.current[`q10_b_${i}`] = el} src={`${API_URL}${pairB.audio}`} preload="auto" />
-
-                          <button 
-                            className="q10-play-btn"
-                            onClick={() => playAudio(`q10_b_${i}`)}
-                          >
-                            🔊 Poslušaj b
-                          </button>
-                          <div 
-                            className={`q10-btn ${isBSelected && !isBLocked ? "active" : ""} ${isBLocked && isBCorrect && isBSelected ? "correct" : ""} ${isBWrong ? "wrong" : ""}`}
-                            onClick={() => handleMultiSelect(current.id, optB)}
-                          >
-                            <span className="q10-text">{pairB.label}</span>
-                            {isBLocked && isBCorrect && isBSelected && <span className="opt-mark">✓</span>}
-                            {isBWrong && <span className="opt-mark">✗</span>}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+                      );
+                   })}
+                </div>
+             </div>
           ) : (
             <>
-              {/* STANDARDNI DIZAJN ZA SVA OSTALA PITANJA */}
               {current.type === "intro" && (
                 <>
                   <h1 className="glavni-naslov">{current.title}</h1>
@@ -370,55 +397,94 @@ export default function Quiz({
 
               {(current.type === "audio" || current.type === "audio2") && (
                 <>
-                  <h2>{current.title}</h2>
-                  <div className="audio-grid">
+                  <h2 style={{ textAlign: "center" }}>{current.title}</h2>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", marginTop: "20px" }}>
                     {current.voices.map((v, i) => (
-                      <div key={i} className="audio-item">
+                      <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", background: "#f9fbfc", padding: "12px 24px", borderRadius: "12px", border: "1px solid #e5e9ef", width: "100%", maxWidth: "400px" }}>
                         <audio ref={el => audioRefs.current[`general_${i}`] = el} src={`${API_URL}${v.audio || v}`} preload="auto" />
-                        <button className="play-audio-btn" onClick={() => playAudio(`general_${i}`)}>{v.label || v}</button>
+                        <button 
+                          onClick={() => playAudio(`general_${i}`)}
+                          className="play-audio-btn"
+                          style={{ flex: 1, display: "flex", justifyContent: "center" }}
+                        >
+                          🔊 {v.label || `Primjer ${i + 1}`}
+                        </button>
                       </div>
                     ))}
                   </div>
                 </>
               )}
 
-              {/* POPRAVLJENI AUDIO_SELECT (Q12) - SADA PUŠTA 1-5-2.wav */}
               {current.type === "audio_select" && (
                 <>
                   <p className="question-text" dangerouslySetInnerHTML={{ __html: current.question }} />
-                  <div className="options-grid" style={{ flexDirection: "column" }}>
-                    {current.voices.map((v, i) => {
-                      const optVal = v.label.split(")")[0].trim() + ")";
-                      const isSelected = answers[current.id] === optVal || answers[current.id] === v.label;
-                      const isCorrectOpt = isQLocked && current.correct && (current.correct === optVal || current.correct === v.label);
-                      const isWrongSelected = isQLocked && isSelected && !isCorrectOpt;
-
-                      return (
-                        <div key={i} style={{ display: "flex", alignItems: "center", gap: "10px", width: "100%", marginBottom: "10px" }}>
-                          
-                          <audio ref={el => audioRefs.current[`q12_${i}`] = el} src={`${API_URL}/audio/1-5-2.wav`} preload="auto" />
-
+                  
+                  {!hasCorrectAnswer && !hasOptions ? (
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", marginTop: "20px" }}>
+                      {current.voices.map((v, i) => (
+                        <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", background: "#f9fbfc", padding: "12px 24px", borderRadius: "12px", border: "1px solid #e5e9ef", width: "100%", maxWidth: "400px" }}>
+                          <audio ref={el => audioRefs.current[`q_${i}`] = el} src={`${API_URL}${v.audio}`} preload="auto" />
                           <button 
-                            onClick={() => playAudio(`q12_${i}`)}
-                            style={{ background: "#e0f2f1", border: "2px solid #09949b", borderRadius: "50%", width: "50px", height: "50px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem", cursor: "pointer", flexShrink: 0 }}
-                            title="Poslušaj"
+                            onClick={() => playAudio(`q_${i}`)}
+                            className="play-audio-btn"
+                            style={{ flex: 1, display: "flex", justifyContent: "center" }}
                           >
-                            🔊
+                            🔊 {v.label}
                           </button>
-                          
-                          <div 
-                            className={`q10-btn ${isSelected && !isQLocked ? "active" : ""} ${isCorrectOpt && isSelected ? "correct" : ""} ${isWrongSelected ? "wrong" : ""}`}
-                            onClick={() => handleSelect(current.id, optVal)}
-                            style={{ position: "relative", padding: "16px 20px", width: "100%", justifyContent: "flex-start" }}
-                          >
-                            <span className="q10-text">{v.label}</span>
-                            {isCorrectOpt && isSelected && <span className="opt-mark" style={{ position: "absolute", right: "16px" }}>✓</span>}
-                            {isWrongSelected && <span className="opt-mark" style={{ position: "absolute", right: "16px" }}>✗</span>}
-                          </div>
                         </div>
-                      );
-                    })}
-                  </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px", marginTop: "20px" }}>
+                      {current.voices.map((v, i) => {
+                        const optVal = v.label;
+                        const isSelected = answers[current.id] === optVal;
+                        const isCorrectOpt = isQLocked && current.correct === optVal;
+                        const isWrongSelected = isQLocked && isSelected && !isCorrectOpt;
+
+                        return (
+                          <div 
+                            key={i} 
+                            style={{ 
+                              display: "flex", 
+                              alignItems: "center", 
+                              justifyContent: "center",
+                              gap: "16px", 
+                              background: isSelected && !isQLocked ? "#e0f2f1" : (isCorrectOpt && isSelected ? "#f0fdf4" : (isWrongSelected ? "#fef2f2" : "#f9fbfc")), 
+                              padding: "16px 20px", 
+                              borderRadius: "12px", 
+                              border: isSelected && !isQLocked ? "2px solid #09949b" : (isCorrectOpt && isSelected ? "2px solid #16a34a" : (isWrongSelected ? "2px solid #dc2626" : "1px solid #e5e9ef")),
+                              cursor: isQLocked ? "default" : "pointer",
+                              position: "relative",
+                              width: "100%",
+                              maxWidth: "400px"
+                            }}
+                            onClick={() => {
+                               if (isQLocked) return;
+                               new Audio(`${API_URL}${v.audio}`).play().catch(e => console.log(e));
+                               handleSelect(current.id, optVal);
+                            }}
+                          >
+                             <button 
+                               onClick={(e) => {
+                                 e.stopPropagation();
+                                 new Audio(`${API_URL}${v.audio}`).play().catch(e => console.log(e));
+                               }}
+                               style={{ background: "#e0f2f1", border: "2px solid #09949b", borderRadius: "50%", width: "50px", height: "50px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem", cursor: "pointer", flexShrink: 0 }}
+                               title="Poslušaj"
+                             >
+                               🔊
+                             </button>
+                             
+                             <span style={{ fontSize: "1.1rem", fontWeight: "bold", textAlign: "center" }}>{v.label}</span>
+                             
+                             {isCorrectOpt && isSelected && <span style={{ color: "#16a34a", fontSize: "1.2rem", fontWeight: "bold", position: "absolute", right: "16px" }}>✓</span>}
+                             {isWrongSelected && <span style={{ color: "#dc2626", fontSize: "1.2rem", fontWeight: "bold", position: "absolute", right: "16px" }}>✗</span>}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
                 </>
               )}
 
@@ -444,7 +510,103 @@ export default function Quiz({
                 </>
               )}
 
-              {current.type === "multi-select" && (
+              {/* POSEBNI DIZAJN ZA MULTI-SELECT SA ZVUKOM (TABLICA) */}
+              {current.type === "multi-select" && current.voices && current.voices.length > 0 && (
+                <>
+                  <p className="question-text" dangerouslySetInnerHTML={{ __html: current.question }} />
+                  
+                  <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginTop: "20px" }}>
+                    {[0, 2, 4, 6].map((pairIndex) => {
+                      const pairA = current.voices[pairIndex];
+                      const pairB = current.voices[pairIndex + 1];
+                      if (!pairA || !pairB) return null;
+
+                      const optA = pairA.label;
+                      const optB = pairB.label;
+
+                      const isASelected = answers[current.id]?.includes(optA);
+                      const isBSelected = answers[current.id]?.includes(optB);
+
+                      const isACorrect = Array.isArray(current.correct) && current.correct.includes(optA);
+                      const isBCorrect = Array.isArray(current.correct) && current.correct.includes(optB);
+
+                      const isALocked = lockedMultiOptions[`${current.id}-${optA}`] || isQLocked;
+                      const isBLocked = lockedMultiOptions[`${current.id}-${optB}`] || isQLocked;
+
+                      return (
+                        <div key={pairIndex} style={{ display: "flex", gap: "16px", width: "100%" }}>
+                          <div 
+                            onClick={() => {
+                              if (isALocked) return;
+                              new Audio(`${API_URL}${pairA.audio}`).play().catch(e => console.log(e));
+                              handleMultiSelect(current.id, optA);
+                            }}
+                            style={{ 
+                              flex: 1, 
+                              display: "flex", 
+                              alignItems: "center", 
+                              gap: "12px", 
+                              background: isASelected && !isALocked ? "#e0f2f1" : (isALocked && isACorrect && isASelected ? "#f0fdf4" : (isALocked && isASelected && !isACorrect ? "#fef2f2" : "#f9fbfc")),
+                              padding: "16px", 
+                              borderRadius: "12px", 
+                              border: isASelected && !isALocked ? "2px solid #09949b" : (isALocked && isACorrect && isASelected ? "2px solid #16a34a" : (isALocked && isASelected && !isACorrect ? "2px solid #dc2626" : "1px solid #e5e9ef")),
+                              cursor: isALocked ? "default" : "pointer"
+                            }}
+                          >
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                new Audio(`${API_URL}${pairA.audio}`).play().catch(e => console.log(e));
+                              }}
+                              style={{ background: "#ffffff", border: "2px solid #09949b", borderRadius: "50%", width: "40px", height: "40px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem", cursor: "pointer", flexShrink: 0 }}
+                            >
+                              🔊
+                            </button>
+                            <span style={{ fontWeight: "bold", fontSize: "1.1rem", flex: 1 }}>{pairA.label}</span>
+                            {isALocked && isACorrect && isASelected && <span style={{ color: "#16a34a", fontSize: "1.2rem" }}>✓</span>}
+                            {isALocked && isASelected && !isACorrect && <span style={{ color: "#dc2626", fontSize: "1.2rem" }}>✗</span>}
+                          </div>
+
+                          <div 
+                            onClick={() => {
+                              if (isBLocked) return;
+                              new Audio(`${API_URL}${pairB.audio}`).play().catch(e => console.log(e));
+                              handleMultiSelect(current.id, optB);
+                            }}
+                            style={{ 
+                              flex: 1, 
+                              display: "flex", 
+                              alignItems: "center", 
+                              gap: "12px", 
+                              background: isBSelected && !isBLocked ? "#e0f2f1" : (isBLocked && isBCorrect && isBSelected ? "#f0fdf4" : (isBLocked && isBSelected && !isBCorrect ? "#fef2f2" : "#f9fbfc")),
+                              padding: "16px", 
+                              borderRadius: "12px", 
+                              border: isBSelected && !isBLocked ? "2px solid #09949b" : (isBLocked && isBCorrect && isBSelected ? "2px solid #16a34a" : (isBLocked && isBSelected && !isBCorrect ? "2px solid #dc2626" : "1px solid #e5e9ef")),
+                              cursor: isBLocked ? "default" : "pointer"
+                            }}
+                          >
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                new Audio(`${API_URL}${pairB.audio}`).play().catch(e => console.log(e));
+                              }}
+                              style={{ background: "#ffffff", border: "2px solid #09949b", borderRadius: "50%", width: "40px", height: "40px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem", cursor: "pointer", flexShrink: 0 }}
+                            >
+                              🔊
+                            </button>
+                            <span style={{ fontWeight: "bold", fontSize: "1.1rem", flex: 1 }}>{pairB.label}</span>
+                            {isBLocked && isBCorrect && isBSelected && <span style={{ color: "#16a34a", fontSize: "1.2rem" }}>✓</span>}
+                            {isBLocked && isBSelected && !isBCorrect && <span style={{ color: "#dc2626", fontSize: "1.2rem" }}>✗</span>}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
+
+              {/* STANDARDNI MULTI-SELECT (BEZ ZVUKA) */}
+              {current.type === "multi-select" && (!current.voices || current.voices.length === 0) && (
                 <>
                   <p className="question-text" dangerouslySetInnerHTML={{ __html: current.question }} />
                   <div className="options-grid">
@@ -573,8 +735,8 @@ export default function Quiz({
 
           <div className="nav-buttons">
             <button className="nav-btn nav-btn-back" disabled={step === 0} onClick={() => setStep(step - 1)}>← Povratak</button>
-            {step < steps.length - 1 && <button className="nav-btn nav-btn-next" onClick={handleNext} disabled={requiresAnswer()}>Nastavak →</button>}
-            {step === steps.length - 1 && <button className="nav-btn nav-btn-next" onClick={submitQuiz} disabled={requiresAnswer()}>Završi kviz ✓</button>}
+            {step < groupedSteps.length - 1 && <button className="nav-btn nav-btn-next" onClick={handleNext} disabled={requiresAnswer()}>Nastavak →</button>}
+            {step === groupedSteps.length - 1 && <button className="nav-btn nav-btn-next" onClick={submitQuiz} disabled={requiresAnswer()}>Završi kviz ✓</button>}
           </div>
         </div>
 

@@ -146,6 +146,7 @@ async function run() {
           { prompt: "Razgovara sam sa sobom.", parts: 2, correct: ["sa", "sam"], labels: ["Prednaglasnica", "Zanaglasnica"] },
         ],
       },
+      /* ================= Q10 ================= */
       {
         quizId: "kviz2",
         order: 11,
@@ -153,18 +154,19 @@ async function run() {
         id: "q10",
         question: "U kojim je primjerima naglasak pomaknut na proklitiku? (Poslušajte parove)",
         voices: [
-          { label: "1. a) na more", audio: "/audio/z11_a.wav" },
-          { label: "1. b) na more", audio: "/audio/z11_b.wav" },
-          { label: "2. a) u grad", audio: "/audio/z12_a.wav" },
-          { label: "2. b) u grad", audio: "/audio/z12_b.wav" },
-          { label: "3. a) na vlak", audio: "/audio/z13_a.wav" },
-          { label: "3. b) na vlak", audio: "/audio/z13_b.wav" },
-          { label: "4. a) u dvoje", audio: "/audio/z14_a.wav" },
-          { label: "4. b) u dvoje", audio: "/audio/z14_b.wav" },
+          { label: "na more", audio: "/audio/z11_a.wav" },
+          { label: "na more", audio: "/audio/z11_b.wav" },
+          { label: "u grad", audio: "/audio/z12_a.wav" },
+          { label: "u grad", audio: "/audio/z12_b.wav" },
+          { label: "na vlak", audio: "/audio/z13_a.wav" },
+          { label: "na vlak", audio: "/audio/z13_b.wav" },
+          { label: "u dvoje", audio: "/audio/z14_a.wav" },
+          { label: "u dvoje", audio: "/audio/z14_b.wav" },
         ],
-        options: ["1. b", "2. b", "3. b", "4. b"],
-        correct: ["1. b", "2. b", "3. b", "4. b"],
-        lamp: "U svim navedenim primjerima naglasak je pomaknut na proklitiku (pod b).",
+        options: ["na more", "u grad", "na vlak", "u dvoje"],
+        // Točni odgovori su sada desne riječi iz svakog para
+        correct: ["na more", "u grad", "na vlak", "u dvoje"],
+        lamp: "Naglasak je pomaknut na proklitiku u desnim primjerima.",
       },
       {
         quizId: "kviz2",
