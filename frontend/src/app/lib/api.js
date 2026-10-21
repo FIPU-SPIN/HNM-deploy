@@ -1,8 +1,6 @@
 // Centralized API base URL for the backend (Express server).
-// Override per-environment via NEXT_PUBLIC_API_URL in .env.local
-// (e.g. NEXT_PUBLIC_API_URL=https://api.example.com). Falls back to the
-// local dev server on port 5000.
-export const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+// Requests go through the Next.js proxy (see rewrites in next.config.js),
+// so the browser never talks to port 5000 directly.
+export const API_URL = "/api";
 
 export default API_URL;

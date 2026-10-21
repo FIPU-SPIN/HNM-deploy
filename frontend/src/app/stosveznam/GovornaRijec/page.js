@@ -26,7 +26,7 @@ export default function GovornaRijecPage() {
       currentAudioRef.current = null;
     }
     
-    const audio = new Audio(`http://localhost:5000/audio/${soundName}.wav`);
+    const audio = new Audio(`/api/audio/${soundName}.wav`);
     
     const playPromise = audio.play();
     if (playPromise !== undefined) {

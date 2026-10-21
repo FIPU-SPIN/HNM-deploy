@@ -1,8 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Allow the EC2 public IP to request /_next/* dev resources cross-origin.
-  allowedDevOrigins: ["16.192.20.160"],
+  images: {
+    unoptimized: true,
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://127.0.0.1:5000/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
