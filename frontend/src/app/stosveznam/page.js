@@ -98,7 +98,7 @@ export default function StoSveZnamPage() {
         <div className="slika-placeholder">
           <div className="karta-wrapper">
             <Image
-              src="/assets/images/ikona.png"
+              src="/assets/images/ikona.PNG"
               alt="Ilustracija naglasnog sustava"
               width={800}
               height={900}
