@@ -25,6 +25,7 @@ async function run() {
         order: 1,
         type: "intro",
         title: "Distribucijska pravila",
+        // VAŽNO: ovdje mora biti točan naziv slike iz privitka 03 (ista kao na poglavlju o distribucijskim pravilima)
         image: "/assets/images/Distribucijska_pravila.png",
         text: "U ovom kvizu provjeravamo znanje o raspodjelnim pravilima naglasaka u hrvatskome standardnom jeziku.",
       },
@@ -37,7 +38,7 @@ async function run() {
         id: "q1a",
         question: "Koji naglasak može biti na podcrtanom slogu u riječima: <u>slon</u>, <u>krov</u>, <u>vrat</u>?",
         options: ["samo silazni", "samo uzlazni", "sva četiri naglaska"],
-        correct: "0",
+        correct: "samo silazni",
         lamp: "Jednosložne riječi mogu imati samo silazne naglaske.",
       },
 
@@ -49,7 +50,7 @@ async function run() {
         id: "q1b",
         question: "Koji naglasak može biti na podcrtanom slogu u riječima: <u>ju</u>tro, <u>slo</u>ga, <u>ze</u>bra?",
         options: ["samo silazni", "samo uzlazni", "sva četiri naglaska"],
-        correct: "2",
+        correct: "sva četiri naglaska",
         lamp: "Na prvom slogu dvosložnih i višesložnih riječi mogu se naći sva četiri naglaska.",
       },
 
@@ -61,8 +62,8 @@ async function run() {
         id: "q1c",
         question: "Koji naglasak može biti na podcrtanom slogu u riječima: slo<u>bo</u>da, ti<u>ši</u>na, ja<u>či</u>na?",
         options: ["samo silazni", "samo uzlazni", "sva četiri naglaska"],
-        correct: "1",
-        lamp: "Na unutarnjem slogu (koji nije ni prvi ni zadnji) mogu biti samo uzlazni naglasci.",
+        correct: "samo uzlazni",
+        lamp: "Na središnjemu slogu mogu biti samo uzlazni naglasci.",
       },
 
       /* ================= Q1d ================= */
@@ -73,22 +74,23 @@ async function run() {
         id: "q1d",
         question: "Koji naglasak može biti na podcrtanom slogu u riječima: inter<u>vju</u>, doku<u>ment</u>?",
         options: ["samo silazni", "samo uzlazni", "sva četiri naglaska"],
-        correct: "0",
+        correct: "samo silazni",
         lamp: "Na zadnjem slogu mogu biti samo silazni naglasci.",
       },
 
-      /* ================= Q2 ================= */
+      /* ================= Q2 =================
+         audio_choice: gumb za slušanje odvojen od odabira */
       {
         quizId: "kviz3",
         order: 6,
-        type: "audio_select",
+        type: "audio_choice",
         id: "q2",
-        question: "Poslušajte izgovor sljedećih riječi s različitim mjestima istoga naglaska. Koji se naglasci ne nalaze ni na zadnjem slogu?",
+        question: "Poslušajte izgovor sljedećih riječi s različitim mjestima istoga naglaska. Koji se naglasci ne nalaze na zadnjemu slogu?",
         voices: [
           { label: "Klikni za izgovor", audio: "/audio/1-3-2.wav" }
         ],
         options: ["uzlazni", "silazni"],
-        correct: "0",
+        correct: "uzlazni",
         lamp: "Uzlazni naglasci (kratkouzlazni i dugouzlazni) ne mogu biti na zadnjem slogu u riječi.",
       },
 
@@ -100,8 +102,8 @@ async function run() {
         id: "q3",
         question: "Odaberite riječi u kojima se silazni naglasak pojavljuje na nepočetnom slogu, a pripadaju standardnom jeziku (priručnici ih bilježe kao razgovorne).",
         options: ["dijamȁnt", "dirigȅnt", "poglȅdaj", "akvȃrij", "poljoprȉvreda", "prespȃvam"],
-        correct: [0, 1, 3, 4],
-        lamp: "Priručnici bilježe dijamant, dirigent, akvarij i poljoprivreda kao razgovorne likove standardnoga jezika sa silaznim naglaskom na nepočetnom slogu.",
+        correct: ["dijamȁnt", "dirigȅnt", "akvȃrij", "poljoprȉvreda"],
+        lamp: "Priručnici bilježe <i>dijamant</i>, <i>dirigent</i>, <i>akvarij</i> i <i>poljoprivreda</i> kao razgovorne likove standardnoga jezika sa silaznim naglaskom na nepočetnom slogu. Govornici koji često ostvaruju silazne naglaske na nepočetnom slogu, osobito u glagolima, najčešće su govornici koji dolaze iz zapadne i sjeverne regije.",
       },
 
       /* ================= Q4 ================= */
@@ -112,14 +114,17 @@ async function run() {
         id: "q4",
         question: "Hrvatski standardni naglasni sustav ima nekoliko temeljnih raspodjelnih (distribucijskih) pravila. Odaberite točne tvrdnje.",
         options: [
-          "Uzlazni naglasci ne mogu biti na zadnjem slogu u riječi.",
-          "Silazni naglasci ne mogu biti na zadnjem slogu u riječi.",
-          "Slog ispred naglaska može imati prednaglasnu dužinu.",
-          "Jednosložne riječi imaju samo uzlazne naglaske.",
-          "Slog iza naglaska može imati zanaglasnu dužinu.",
+          "a) Uzlazni naglasci ne mogu biti na zadnjem slogu u riječi.",
+          "b) Silazni naglasci ne mogu biti na zadnjem slogu u riječi.",
+          "c) Slog ispred naglaska može imati prednaglasnu dužinu.",
+          "d) Jednosložne riječi imaju samo uzlazne naglaske.",
+          "e) Slog iza naglaska može imati zanaglasnu dužinu.",
         ],
-        correct: [0, 4],
-        lamp: "Točne su tvrdnje: Uzlazni naglasci ne mogu biti na zadnjem slogu, i slog iza naglaska može imati zanaglasnu dužinu.",
+        correct: [
+          "a) Uzlazni naglasci ne mogu biti na zadnjem slogu u riječi.",
+          "e) Slog iza naglaska može imati zanaglasnu dužinu.",
+        ],
+        lamp: "Točne su tvrdnje: <i>Uzlazni naglasci ne mogu biti na zadnjem slogu u riječi</i>. i <i>Slog iza naglaska može imati zanaglasnu dužinu</i>.",
       },
 
     ];

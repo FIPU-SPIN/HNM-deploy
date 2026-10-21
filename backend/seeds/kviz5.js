@@ -36,7 +36,7 @@ async function run() {
         id: "q1",
         question: "Što se promijenilo u naglasku u deklinaciji imenice stȏl – stòla – stòlovi?",
         options: ["ton", "trajanje", "ton i trajanje", "mjesto"],
-        correct: "2",
+        correct: "ton i trajanje",
         lamp: "U paradigmi stȏl – stòla – stòlovi mijenja se i ton (silazni → uzlazni) i trajanje (dugi → kratki), dakle ton i trajanje zajedno.",
       },
 
@@ -44,65 +44,72 @@ async function run() {
       {
         quizId: "kviz5",
         order: 3,
-        type: "audio_select",
+        type: "audio_choice",
         id: "q2",
-        question: "Poslušajte izgovor imenice vrijeme, usporedite znakovlje u oblicima te odredite što se promijenilo u paradigmi.\n\nMislim na vrijéme. Nemam vrȅmena. Druga su vremèna.",
+        question: "Poslušajte izgovor imenice <i>vrijeme</i>, usporedite znakovlje u oblicima te odredite što se promijenilo u paradigmi.<br><br><i>Mislim na vrijéme. Nemam vrȅmena. Druga su vremèna.</i>",
         voices: [
           { label: "Poslušaj.", audio: "/audio/1-6-1.wav.wav" },
         ],
         options: ["ton i trajanje", "mjesto i trajanje", "mjesto, ton i trajanje"],
-        correct: "2",
-        lamp: "U paradigmi imenice vrijeme mijenja se mjesto naglaska, ton i trajanje — dakle sve tri sastavnice naglaska.",
+        correct: "mjesto, ton i trajanje",
+        lamp: "U paradigmi imenice <i>vrijeme</i> mijenja se mjesto naglaska, ton i trajanje — dakle sve tri sastavnice naglaska.",
       },
 
-      /* ================= Q3a ================= */
+      /* ================= Q3 (jedna stranica: zvuk + dva pitanja) =================
+         q3_audio je zaglavlje sa zvukom, q3a i q3b su pitanja s odabirom */
       {
         quizId: "kviz5",
         order: 4,
         type: "audio_select",
-        id: "q3a",
-        question: "Poslušajte imenicu novac u različitim oblicima. Je li riječ o promjenljivome ili nepromjenljivome naglasnom tipu?",
+        id: "q3_audio",
+        question: "Poslušajte imenice <i>novac</i> i <i>ljubav</i> u različitim oblicima.",
         voices: [
-          { label: "Poslušaj: novac", audio: "/audio/1-6-2.wav.wav" },
+          { label: "Poslušaj: novac, ljubav", audio: "/audio/1-6-2.wav.wav" },
         ],
-        options: ["promjenljivi tip", "nepromjenljivi tip"],
-        correct: "0",
-        lamp: "Novac pripada promjenljivome tipu — naglasak se mijenja kroz paradigmu (nòvac – nòvca – novàca).",
+        options: [],
       },
 
-      /* ================= Q3b ================= */
       {
         quizId: "kviz5",
         order: 5,
-        type: "audio_select",
-        id: "q3b",
-        question: "Poslušajte imenicu ljubav u različitim oblicima. Je li riječ o promjenljivome ili nepromjenljivome naglasnom tipu?",
-        voices: [
-          { label: "Poslušaj: ljubav", audio: "/audio/1-6-2.wav.wav" },
-        ],
+        type: "select",
+        id: "q3a",
+        question: "Kojemu tipu pripada imenica <i>novac</i>?",
         options: ["promjenljivi tip", "nepromjenljivi tip"],
-        correct: "1",
-        lamp: "Ljubav pripada nepromjenljivome tipu — naglasak ostaje isti kroz cijelu paradigmu (ljûbav – ljûbavi – ljûbavi...).",
+        correct: "promjenljivi tip",
+        lamp: "<i>nòvac</i> – G jd. <i>nóvca</i> – N mn. <i>nȏvci</i> – G mn. <i>nȍvācā</i>",
       },
 
-/* ================= Q4 ================= */
-{
-  quizId: "kviz5",
-  order: 6,
-  type: "audio_with_input",
-  id: "q4",
-  question: "Poslušajte izgovor rečenica i ispišite riječi za koje smatrate da su izgovorene s hiperkorektnim naglaskom.",
-  voices: [
-    { label: "Poslušaj izgovor rečenica", audio: "/audio/1-6-3.wav.wav" },
-  ],
-  sentences: [
-    { prompt: "a) Nemoj mu otvoriti vrata.", parts: 1, correct: "otvoriti" },
-    { prompt: "b) Zapuhao je snažan vjetar.", parts: 1, correct: "zapuhao" },
-    { prompt: "c) Brod se nasukao na stijene.", parts: 1, correct: "nasukao" },
-    { prompt: "d) Nije nas zanimala povijest.", parts: 1, correct: "zanimala" },
-  ],
-  lamp: "Hiperkorektni naglasci najčešće nastaju na korpusu glagola kod govornika koji nisu potpuno svladali standardnu normu. Točni odgovori: otvoriti, zapuhao, nasukao, zanimala.",
-},
+      {
+        quizId: "kviz5",
+        order: 6,
+        type: "select",
+        id: "q3b",
+        question: "Kojemu tipu pripada imenica <i>ljubav</i>?",
+        options: ["promjenljivi tip", "nepromjenljivi tip"],
+        correct: "nepromjenljivi tip",
+        lamp: "<i>ljúbav</i> – G <i>ljúbavi</i> – V <i>ljúbavi</i> – N mn. <i>ljúbavi</i>",
+      },
+
+      /* ================= Q4 =================
+         Polja se otvaraju jedno po jedno, nakon svakog točnog odgovora */
+      {
+        quizId: "kviz5",
+        order: 7,
+        type: "audio_with_input",
+        id: "q4",
+        question: "Poslušajte izgovor rečenica i ispišite riječi za koje smatrate da su izgovorene s hiperkorektnim naglaskom.",
+        voices: [
+          { label: "Poslušaj izgovor rečenica", audio: "/audio/1-6-3.wav.wav" },
+        ],
+        sentences: [
+          { prompt: "a) Nemoj mu otvoriti vrata.", parts: 1, correct: "otvoriti" },
+          { prompt: "b) Zapuhao je snažan vjetar.", parts: 1, correct: "zapuhao" },
+          { prompt: "c) Brod se nasukao na stijene.", parts: 1, correct: "nasukao" },
+          { prompt: "d) Nije nas zanimala povijest.", parts: 1, correct: "zanimala" },
+        ],
+        lamp: "Hiperkorektni naglasci najčešće nastaju na korpusu glagola kod onih govornika koji nisu potpuno svladali standardnu normu pa analogijom pomiču i uzlazne naglaske u paradigmi. Takvi se ostvaraji smatraju pogreškom. Hiperkorektno su izgovorene ove riječi: <i>otvoriti</i>, <i>zapuhao</i>, <i>nasukao</i>, <i>zanimala</i>.",
+      },
 
       /* ================= Q5 ================= */
       {
@@ -112,8 +119,8 @@ async function run() {
         id: "q5",
         question: "U kojim se oblicima glagola može ostvariti pomicanje naglaska dodavanjem prefiksa?",
         options: ["pȋšēm", "písati", "píši", "písao", "pȋsan"],
-        correct: [0, 4],
-        lamp: "Na prefiks se pomiču samo silazni naglasci — dugosilazni (iza kojega ostaje zanaglasna dužina) i kratkosilazni. To su oblici pȋšēm i pȋsan.",
+        correct: ["pȋšēm", "pȋsan"],
+        lamp: "Na prefiks se pomiču samo silazni naglasci — dugosilazni (iza kojega ostaje zanaglasna dužina) i kratkosilazni. To su oblici <i>pȋšēm</i> i <i>pȋsan</i>.",
       },
 
       /* ================= Q6 ================= */
@@ -122,10 +129,10 @@ async function run() {
         order: 9,
         type: "select",
         id: "q6",
-        question: "Prema pravilu metatonije — koji se naglasak ostvaruje na prethodnom slogu (primjerice u riječima asistȅnt, dekȃn)?",
+        question: "Prema pravilu metatonije odredite koji se naglasak ostvaruje na prethodnom slogu u riječima <i>asistȅnt</i> i <i>dekȃn</i>?",
         options: ["kratkouzlazni", "dugouzlazni"],
-        correct: "0",
-        lamp: "Prema pravilu metatonije na prethodnom slogu ostvaruje se kratkouzlazni naglasak (asìstent, dèkan).",
+        correct: "kratkouzlazni",
+        lamp: "Prema pravilu metatonije na prethodnom slogu ostvaruje se kratkouzlazni naglasak (<i>asìstent</i>, <i>dèkān</i>).",
       },
 
       /* ================= Q7 ================= */
@@ -134,10 +141,10 @@ async function run() {
         order: 10,
         type: "select",
         id: "q7",
-        question: "Prema pravilu metatonije — koji se naglasak ostvaruje pomicanjem na mjesto prednaglasne dužine (primjerice u riječima trāvȁ, rūkȁ)?",
+        question: "Prema pravilu metatonije odredite koji se naglasak ostvaruje pomicanjem na mjesto prednaglasne dužine u riječima <i>trāvȁ</i> i <i>rūkȁ</i>?",
         options: ["kratkouzlazni", "dugouzlazni"],
-        correct: "1",
-        lamp: "Pomicanjem na mjesto prednaglasne dužine ostvaruje se dugouzlazni naglasak (tráva, rúka).",
+        correct: "dugouzlazni",
+        lamp: "Pomicanjem na mjesto prednaglasne dužine ostvaruje se dugouzlazni naglasak (<i>tráva</i>, <i>rúka</i>).",
       },
 
       /* ================= Q8 ================= */
@@ -148,8 +155,8 @@ async function run() {
         id: "q8",
         question: "U kojim riječima ostaje zanaglasna dužina pomicanjem silaznih naglasaka?",
         options: ["asistȅnt", "dekȃn", "kolȃč", "minȉstar", "naprȁviti"],
-        correct: [1, 2],
-        lamp: "Zanaglasna dužina ostaje pri pomicanju dugosilaznog naglaska — dekȃn → dèkān, kolȃč → kòlāč. Kratkosilazni naglasci ne ostavljaju zanaglasnu dužinu.",
+        correct: ["dekȃn", "kolȃč"],
+        lamp: "Zanaglasna dužina ostaje pri pomicanju dugosilaznog naglaska — <i>dekȃn</i> → <i>dèkān</i>, <i>kolȃč</i> → <i>kòlāč</i>. Iza kratkosilaznih naglasaka ne ostaje dužina.",
       },
 
     ];

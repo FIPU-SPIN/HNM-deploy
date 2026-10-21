@@ -142,11 +142,12 @@ async function run() {
           "Govornica 4 dolazi iz južne Hrvatske (Dubrovnik). Govornici iz Dubrovnika i Osijeka u govoru imaju četiri naglaska, a govornici iz Pule i Zagreba najčešće jedan.",
       },
 
-      /* ================= Q4 ================= */
+      /* ================= Q4 =================
+         NOVI TIP "audio_choice": gumbi za zvuk odvojeno, odabir odvojeno */
       {
         quizId: "kviz1",
         order: 9,
-        type: "audio_select",
+        type: "audio_choice",
         id: "q4",
         question:
           "Je li Vaš govor, kada se trudite izgovarati standardno, sličniji govorniku 1 ili govorniku 2?",
@@ -197,7 +198,7 @@ async function run() {
         type: "audio_select",
         id: "q6",
         question:
-          "Poslušajte izgovor rečenica Ovo je naglasni priručnik. Nakon kiše pojavi se duga. dviju govornica iz visinskoga naglasnog sustava i dviju govornica iz udarnoga sustava.",
+          "Poslušajte izgovor rečenice Nakon kiše pojavi se duga u izvedbi dviju govornica iz visinskoga naglasnog sustava i dviju govornica iz udarnoga sustava.",
         voices: [
           { label: "Osijek", audio: "/audio/1-1-5a.wav" },
           { label: "Split", audio: "/audio/1-1-5b.wav" },
@@ -220,7 +221,8 @@ async function run() {
           "U govoru govornica iz Osijeka i Splita čuju se uzlazni naglasci, primjerice u riječima priručnik i duga, a kod govornica iz Rijeke i Pule sve su riječi izgovorene jednim, udarnim naglaskom. Ako ste prethodno odgovorili da je Vaš naglasni sustav udarni, tada je Vaš izgovor sličniji govornicama iz Rijeke i Pule, a ako ste odgovorili da je Vaš izgovor visinski, tada je Vaš izgovor sličniji govornicama iz Osijeka ili Splita s obzirom na naglasak riječi.",
       },
 
-      /* ================= Q7 ================= */
+      /* ================= Q7 (zaglavlje grupe: zvukovi) =================
+         Q7, Q7.1 - Q7.4 u Quiz.js prikazuju se na JEDNOJ stranici */
       {
         quizId: "kviz1",
         order: 14,
@@ -241,10 +243,9 @@ async function run() {
         order: 15,
         type: "select",
         id: "q7_1",
-        question:
-          "Koji od triju izgovora smatrate 'običnim', 'češćim'?",
-        options: ["1", "2", "3"],
-        correct: "2",
+        question: "Koji od triju izgovora smatrate 'običnim', 'češćim'?",
+        options: ["Izgovor 1", "Izgovor 2", "Izgovor 3"],
+        correct: "Izgovor 2",
         lamp:
           "Sve rečenice u prethodnoj vježbi izgovorila je spikerica. Izgovor 1 oprimjeruje govor s naglascima i dužinama koji su propisani u normativnim priručnicima te ilustrira visoki varijetet. Izgovor 2 oprimjeruje govor s ponešto izmijenjenim raspodjelnim pravilima i gotovo dokinutom zanaglasnom dužinom te ilustrira neutralni (prihvatljiv i prihvaćen) varijetet. Izgovor 3 oprimjeruje govor s udarnim naglaskom i mjestima naglaska kojima ilustriramo niski varijetet. I Vaš će se izgovor vjerojatno razlikovati ovisno o komunikacijskoj situaciji, mjestu na kojemu govorite. Izgovor 2 smatra se neutralnijim, običnijim standardom, s obzirom na mjesto naglaska, u sociofonetskim istraživanjima.",
       },
@@ -257,8 +258,8 @@ async function run() {
         id: "q7_2",
         question:
           "Koji izgovor percipirate kao 'visoki stil', 'naučen', 'akademski'?",
-        options: ["1", "2", "3"],
-        correct: "1",
+        options: ["Izgovor 1", "Izgovor 2", "Izgovor 3"],
+        correct: "Izgovor 1",
         lamp:
           "Iako se Izgovor 1 smatra visokim i biranijim stilom, mnoga ga danas doživljavaju zastarjelim ili regionalno obilježenim (ovisno o podrijetlu i dobi onoga tko procjenjuje izgovore). Ovaj bi izgovor mogao biti najbliži onima iz južne regije (zbog izgovora posuđenice televizija).",
       },
@@ -270,8 +271,8 @@ async function run() {
         type: "select",
         id: "q7_3",
         question: "Koji izgovor smatrate 'razgovornim', 'zagrebačkim'?",
-        options: ["1", "2", "3"],
-        correct: "3",
+        options: ["Izgovor 1", "Izgovor 2", "Izgovor 3"],
+        correct: "Izgovor 3",
         lamp:
           "Ako ste takvim procijenili izgovor 3, to znači da ste tijekom školovanja stekli temeljna znanja o značajkama standardnoga izgovora te da možete prepoznavati izgovor koji nije normiran.",
       },
@@ -283,7 +284,7 @@ async function run() {
         type: "select",
         id: "q7_4",
         question: "Je li Vaš govor sličniji prvom, drugom ili trećem izgovoru?",
-        options: ["1", "2", "3"],
+        options: ["Izgovor 1", "Izgovor 2", "Izgovor 3"],
         correct: null,
         lamp:
           "Ako je Vaš govor najsličniji izgovoru 3, ponovno ste potvrdili da je Vaš naglasni sustav udarni, a ako je Vaš odgovor izgovor 1 ili 2, potvrdili ste da je Vaš naglasni sustav visinski ili miješani/prijelazni. Za detaljniju analizu Vašega naglasnog sutava potrebno je testirati i percepciju (izgovor), a to činimo naknadno, u aplikaciji Izgovaram.",

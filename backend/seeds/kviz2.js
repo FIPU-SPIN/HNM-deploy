@@ -146,13 +146,13 @@ async function run() {
           { prompt: "Razgovara sam sa sobom.", parts: 2, correct: ["sa", "sam"], labels: ["Prednaglasnica", "Zanaglasnica"] },
         ],
       },
-      /* ================= Q10 ================= */
+            /* ================= Q10 ================= */
       {
         quizId: "kviz2",
         order: 11,
-        type: "multi-select",
+        type: "audio_pairs",
         id: "q10",
-        question: "U kojim je primjerima naglasak pomaknut na proklitiku? (Poslušajte parove)",
+        question: "U kojem je primjeru svakog para naglasak pomaknut na proklitiku? (Poslušajte parove)",
         voices: [
           { label: "na more", audio: "/audio/z11_a.wav" },
           { label: "na more", audio: "/audio/z11_b.wav" },
@@ -163,15 +163,19 @@ async function run() {
           { label: "u dvoje", audio: "/audio/z14_a.wav" },
           { label: "u dvoje", audio: "/audio/z14_b.wav" },
         ],
-        options: ["na more", "u grad", "na vlak", "u dvoje"],
-        // Točni odgovori su sada desne riječi iz svakog para
-        correct: ["na more", "u grad", "na vlak", "u dvoje"],
-        lamp: "Naglasak je pomaknut na proklitiku u desnim primjerima.",
+        // točni su samo zapisi koji završavaju na _b
+        correct: [
+          "/audio/z11_b.wav",
+          "/audio/z12_b.wav",
+          "/audio/z13_b.wav",
+          "/audio/z14_b.wav",
+        ],
+        lamp: "Naglasak je pomaknut na proklitiku u drugom primjeru svakog para.",
       },
       {
         quizId: "kviz2",
         order: 12,
-        type: "multi-select",
+        type: "audio_choice",
         id: "q11",
         question: "U kojim se govornim riječima može ostvariti pomicanje naglaska?",
         options: ["na ulici", "u petak", "za mene", "na krovu", "ne sjedim", "ne sjedam"],
@@ -181,15 +185,17 @@ async function run() {
       {
         quizId: "kviz2",
         order: 13,
-        type: "audio_select",
+        type: "audio_choice",
         id: "q12",
         question: "Poslušajte izgovor s pomicanjem naglaska. Odredite koje je oslabljeno.",
         voices: [
-          { label: "a) nà môre, ù gråd, nà vlåk, ù dvoje", audio: "/audio/1.5.2.a.wav" },
-          { label: "b) ù kući, nè znâm, nì jå", audio: "/audio/1.5.2.b.wav" },
+          { label: "Poslušaj izgovor", audio: "/audio/1-5-2.wav" },
         ],
-        options: ["a", "b"],
-        correct: "b",
+        options: [
+          "a) nà môre, ù gråd, nà vlåk, ù dvoje",
+          "b) ù kući, nè znâm, nì jå",
+        ],
+        correct: "b) ù kući, nè znâm, nì jå",
         lamp: "Oslabljeno je ono pomicanje kada se na proklitici ostvaruje uzlazni naglasak.",
       },
       {
