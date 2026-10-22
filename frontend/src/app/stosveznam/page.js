@@ -269,7 +269,7 @@ export default function StoSveZnamPage() {
         </p>
         {isLoggedIn ? (
           <Link href="/kviz1" className="start-quiz-btn">
-            Pokreni kratki kviz i odredi kojemu naglasnome sustavu pripada tvoj govor.
+            Pokreni kviz
           </Link>
         ) : (
           <button className="start-quiz-btn disabled" disabled>

@@ -25,7 +25,7 @@ export default function NaglasciUParadigmiPage() {
 
           <div className="slika-paradigma">
             <Image 
-              src="/assets/images/Naglasci_u_paradigmi.png"
+              src="/assets/images/naglasci_u_paradigmi.png"
               alt="Naslovna slika stranice naglasci u paradigmi"
               width={800}
               height={600}
