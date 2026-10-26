@@ -4,9 +4,27 @@ Web app for learning Croatian accent systems (naglasci). Next.js frontend + Expr
 
 ## 🌐 Live address
 
-**http://16.192.20.160:3000/**
+**http://naglasci.unipu.hr/**
 
-> Use `http://` (not `https://`) — the dev server serves plain HTTP. The backend API runs on port `5000` at the same host.
+## Deployment
+
+Every push to `main` is deployed automatically by `.github/workflows/deploy.yml`, which runs on a
+self-hosted GitHub Actions runner on the server (`naglasci`) and executes `scripts/deploy.sh`:
+
+1. `git reset --hard origin/main` in `~/HNM-deploy` (`.env` files are git-ignored and kept)
+2. `npm ci` when a `package*.json` changed
+3. if `backend/seeds/` changed: `mongodump` backup to `~/backups/`, then `npm run seed`
+4. `next build`, restart services, health check
+
+On the server, the app runs as user systemd services (nginx :80 → Next.js :3000, which proxies `/api` → Express :5000):
+
+```bash
+systemctl --user status naglasci-backend naglasci-frontend github-runner
+journalctl --user -u naglasci-frontend -f
+bash ~/HNM-deploy/scripts/deploy.sh      # manual deploy
+```
+
+A deploy can also be triggered from the Actions tab (*Run workflow*).
 
 ## Structure
 

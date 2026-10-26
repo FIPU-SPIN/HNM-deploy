@@ -1,0 +1,22 @@
+name: Deploy to naglasci.unipu.hr
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-naglasci
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # Self-hosted runner on the server itself (SSH is firewalled to university networks).
+    runs-on: [self-hosted, naglasci]
+    if: github.repository == 'FIPU-SPIN/HNM-deploy'
+    steps:
+      - name: Deploy
+        run: |
+          cd "$HOME/HNM-deploy"
+          git fetch --quiet origin main
+          bash <(git show origin/main:scripts/deploy.sh)
