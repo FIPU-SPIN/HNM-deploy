@@ -44,7 +44,7 @@ systemctl --user restart naglasci-backend naglasci-frontend
 
 # Health check
 for i in $(seq 1 30); do
-  if curl -fsS -o /dev/null http://127.0.0.1:3000/ && curl -fsS -o /dev/null http://127.0.0.1:5000/; then
+  if curl -fs -o /dev/null http://127.0.0.1:3000/ && curl -fs -o /dev/null http://127.0.0.1:5000/; then
     echo "Deployed $NEW"
     exit 0
   fi
