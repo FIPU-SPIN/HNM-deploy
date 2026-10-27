@@ -133,7 +133,7 @@ export default function NaglasciUParadigmiPage() {
         <p>Nakon lekcije pokreni kratki kviz i provjeri koliko dobro razumiješ naglasne sustave.</p>
         {isLoggedIn ? (
           <Link href="/kviz5" className="start-quiz-btn">
-            Pokreni kviz
+            Pokreni kviz.
           </Link>
         ) : (
           <button className="start-quiz-btn disabled" disabled>
