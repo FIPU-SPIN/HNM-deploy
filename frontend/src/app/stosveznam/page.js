@@ -66,7 +66,7 @@ export default function StoSveZnamPage() {
           <p>
             Ovo je mjesto za identificiranje svoga naglasnog sustava te za provjeru
             osnovnih znanja o naglascima i naglasnoj normi, o naglasnim sustavima,
-            varijetetima i pravilima u hrvatskome jeziku.
+            varijetetima i pravilima u hrvatskome jeziku..
           </p>
           <p className="zakljucak-tekst">
             <strong>Nakon ove razine spremni ste za uvježbavanje percepcije i produkcije naglasaka.</strong>
