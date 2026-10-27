@@ -26,7 +26,7 @@ export default function StoSveZnamPage() {
       currentAudioRef.current = null;
     }
     
-    const audio = new Audio(`/api/audio/${soundName}.wav`);
+    const audio = new Audio(`/api/audio/${soundName.toLowerCase()}.wav`);
     
     const playPromise = audio.play();
     if (playPromise !== undefined) {
