@@ -69,7 +69,7 @@ export default function NaglasciUParadigmiPage() {
           <p><b>Nepromjenljivi tip:</b> ljúbav – ljúbavi</p>
         </div>
 
-        <h3>Hiperkorekcija</h3>
+        <h3>Hiperkorekcija.</h3>
 
         <p>
           Danas je u razgovornom jeziku česta pojava da se prema početku riječi pomiču i oni naglasci koji nisu uzlazni ili tipološki uvjetovani (kao rezultat nedovoljno naučene standardne naglasne norme kod neštokavaca), što je najuočljivije na korpusu prefigiranih glagola (nastalih prefiksacijom). Takvu pojavu nazivamo <b>hiperkorekcijom</b> i u standardu se smatra, zasad, pogreškom. Riječ je o analoškoj pojavi. Na prefiks se, dakle, pomiču samo silazni naglasci: dugosilazni, iza kojega ostaje zanaglasna dužina, i kratkosilazni.
