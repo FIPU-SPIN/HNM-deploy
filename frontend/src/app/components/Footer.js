@@ -16,7 +16,7 @@ export default function Footer() {
           <a href="https://ffpu.unipu.hr/" target="_blank" rel="noopener noreferrer">
             <img src="/assets/images/ffpu.PNG" alt="FFPU" className="footer-logo" />
           </a>
-          <a href="https://ec.europa.eu/regional_policy/home_en" target="_blank" rel="noopener noreferrer">
+          <a href="">
             <img src="/assets/images/eunext.jpg" alt="EU" className="footer-logo" />
           </a>
         </div>

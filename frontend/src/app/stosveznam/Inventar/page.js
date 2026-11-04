@@ -107,7 +107,7 @@ export default function InventarPage() {
       {/* NASLOVNI DIO */}
       <div className="naslovna-rijec">
         <div className="content-container rijec">
-          <h1 className="glavni-naslov">Inventar</h1>
+          <h1 className="glavni-naslov">Naglasni inventar</h1>
           <div className="slika-rijec">
             <Image
               src="/assets/images/mjesto.png"
@@ -241,12 +241,15 @@ export default function InventarPage() {
 
         <div className="fonetska-analiza">
           <h2>Fonetska analiza naglasaka</h2>
-          <p>Naglasak riječi sastoji se od triju sastavnica: jačine, trajanja i tona. Jačina je najvažnija osobina naglaska u značenju istaknutosti. Za ostvaraj silaznoga naglaska dovoljan je jedan slog. Uzlazni se pak naglasci ostvaruju u dva sloga: prvi je slog malo veće jačine, a visoki ton prostire se i na zanaglasni slog.</p>
+          <p>Naglasak riječi sastoji se od triju sastavnica (elemenata, osobina): <b>jačine</b> (siline, intenziteta, jakosti), <b>trajanja</b> (kvantitete) i <b>tona</b> (tonske visine i/ili kretanja tona). Jačina je najvažnija osobina naglaska u značenju istaknutosti. To je mjesto/slog na kojem se naglasak ostvaruje. 
+            Za ostvaraj silaznoga naglaska dovoljan je jedan slog. 
+            Uzlazni se pak naglasci ostvaruju u dva sloga: prvi je slog malo veće jačine, a visoki ton prostire se i na zanaglasni slog. 
+            Upravo zbog toga prostiranja tona na zanaglasni slog uzlazni se naglasci ne ostvaruju na zadnjem slogu riječi. </p>
           <p>S obzirom na jačinu slogovi mogu biti naglašeni ili nenaglašeni, s obzirom na trajanje mogu biti dugi ili kratki, a s obzirom na visinu naglasci mogu biti uzlazni ili silazni.</p>
 
           <div className="praat-sekcija">
             <p className="napomena-za-zvuk">
-              <strong>📢 Poslušajte izgovor riječi: kiša, sunce, trava, rosa i promotrite sliku.</strong>
+              <strong>📢 Poslušajte izgovor riječi: <i>kiša, sunce, trava, rosa</i> i promotrite sliku.</strong>
               <br />
               <button className="zvuk-gumb praat-zvuk-gumb" data-zvuk="1-2-1" onClick={() => playSound("1-2-1")}>🔊 Poslušaj izgovor</button>
             </p> 
@@ -258,7 +261,12 @@ export default function InventarPage() {
               </div>
             </div>
 
-            <p className="praat-opis">Slika prikazuje tijek tona, tijek intenziteta i trajanje vokala u riječima <i>kiša, sunce, trava, rosa</i>. Prve dvije riječi izgovorene su sa silaznim naglaskom, a druge dvije s uzlaznim naglaskom na prvom slogu; prva i zadnja izgovorene su s kratkim naglašenim vokalom, a druga i treća s dugim. Riječi je izgovorila spikerica čiji je osnovni ton oko 170 Hz, a pripada rasponu tona koji nazivamo altom. Okomitim crtama obilježeni su početak i kraj naglašenoga i zanaglasnoga sloga u riječima.</p>
+            <p className="praat-opis">Prve dvije riječi izgovorene su sa silaznim naglaskom, a druge dvije s uzlaznim naglaskom na prvom slogu; prva i zadnja izgovorene su s kratkim naglašenim vokalom, a druga i treća s dugim. Riječi je izgovorila spikerica čiji je osnovni ton oko 170 Hz, a pripada rasponu tona koji nazivamo altom. Okomitim crtama obilježeni su početak i kraj naglašenoga i zanaglasnoga sloga u riječima.
+            <br/>
+            <br/>
+            Na slici se može vidjeti da je naglašeni vokal dulji od zanaglasnoga (mjereno u milisekundama, ms), osobito u dugim naglascima. 
+            Vidi se također da je naglašeni vokal jačega <b>intenziteta</b> od zanaglasnoga vokala (iskazano u decibelima, dB). Zanimljivo je primijetiti da je <b>osnovna frekvencija</b> koja se mjeri u hercima (Hz) i koju percipiramo kao tonsku visinu (tj. visoki ili niski ton) u uzlaznim naglascima podjednako visoka u naglašenom i u zanaglasnom vokalu (tj. da ne uzlazi), a da je kod silaznih naglasaka u zanaglasnom vokalu znatno niža (tj. da silazi). Uzlazni naglasci mogu se interpretirati kao visoka tonska razina koja se prostire na dva sloga. Silazni naglasci su jednosložni: kratkosilazni naglasak sastoji se od jedne visoke tonske razine, a dugosilazni naglasak sastoji se od silaznoga tonskog obrisa unutar jednoga sloga. Ako je riječ dvosložna ili višesložna, zanaglasni je slog silaznih naglasaka niske tonske razine.
+            </p>
           </div>
         </div>
 

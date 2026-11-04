@@ -38,7 +38,7 @@ export default function DistribucijskaPravilaPage() {
 
           <p className="uvodna-definicija">
             <i>
-              Distribucijska ili raspodjelna pravila određuju raspored naglasaka unutar govorne riječi.
+              Distribucijska ili raspodjelna pravila određuju gdje se može naći koji od naglasaka unutar govorne riječi.
             </i>
           </p>
 
@@ -96,7 +96,7 @@ export default function DistribucijskaPravilaPage() {
         <div className="distribucijska-blok">
           <h2>Raspodjelna pravila</h2>
           <p>
-            Uzmemo li u obzir, dakle, polifunkcionalnost standardnoga jezika raspodjelna pravila glase ovako:
+            Uzmemo li u obzir polifunkcionalnost standardnoga jezika, raspodjelna pravila glase ovako:
             uzlazni naglasci mogu biti na bilo kojem slogu osim zadnjem, a silazni naglasci mogu biti na svim slogovima riječi.
           </p>
           <p>
@@ -139,11 +139,11 @@ export default function DistribucijskaPravilaPage() {
           </p>
           <p>
             Ono što je zajedničko svima jest da se iznimke odnose prije svega na govornu riječ
-            (uzimajući u obzir i broj slogova: <i>nȁ vlāk, ali: na vlȁkovima</i>).
+            (uzimajući u obzir i broj slogova: <i>nȁ vlāk</i>, ali: <i>na vlȁkovima</i>)
           </p>
           <p>
             Pojavljivanje silaznoga naglaska na nepočetnom slogu specifično je za niski varijetet
-            (<i>pogledaj, ne vidim</i> i sl.). Takvi naglasni ostvaraji kod glagola još uvijek nisu opisani
+            (<i>pog<b>le</b>daj, ne <b>vi</b>dim</i> i sl.). Takvi naglasni ostvaraji kod glagola još uvijek nisu opisani
             kao značajka razgovornoga stila standardnoga jezika, no u drugim slučajevima (npr. <i>studȅnt, dramatȕrg</i>) silazni je naglasak izvan početnoga sloga zabilježen kao razgovorni
             u suvremenim gramatikama jer se javlja i u visinkome naglasnom sustavu koji je u temelju
             standardnoga jezika (npr. <i>Hrvatska gramatika</i> E. Barić i skupine autora).
@@ -153,18 +153,18 @@ export default function DistribucijskaPravilaPage() {
         {/* UDARNI NAGLASAK */}
         <div className="distribucijska-blok">
           <h2>Udarni naglasak i akut</h2>
+           <div className="napomena-akut">
           <p>
             Govornici koji često ostvaruju silazne naglaske na nepočetnom slogu, osobito u glagolima,
             najčešće su govornici koji govore udarnim naglasnim sustavom pa se svi njihovi naglasci
-            mogu tumačiti kao udarni naglasci.
+            mogu tumačiti kao <strong>udarni naglasci</strong>.
           </p>
+          </div>
+          <br/>
           <p>
             Budući da je najsličniji kratkosilaznome, udarni naglasak često i bilježimo jednako kao
             kratkosilazni, ali govornici iz udarnoga sustava na mjestu dugouzlaznoga naglaska ponekad
-            ostvaruju i dugi naglašeni slog koji je teško interpretirati.
-          </p>
-          <p>
-            Percipira se kao udarni, kao udarni dugi ili kao ravan, a ponekad se, zbog očekivanja
+            ostvaruju i dugi naglašeni slog koji je teško interpretirati. Percipira se kao udarni, kao udarni dugi ili kao ravan, a ponekad se, zbog očekivanja
             dugouzlaznoga, i percipira kao dugouzlazni.
           </p>
 

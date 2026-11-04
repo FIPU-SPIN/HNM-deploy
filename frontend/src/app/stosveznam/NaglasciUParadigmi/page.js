@@ -1,4 +1,3 @@
-/* eslint-disable */
 "use client";
 
 import Image from "next/image";
@@ -72,7 +71,7 @@ export default function NaglasciUParadigmiPage() {
         <h3>Hiperkorekcija.</h3>
 
         <p>
-          Danas je u razgovornom jeziku česta pojava da se prema početku riječi pomiču i oni naglasci koji nisu uzlazni ili tipološki uvjetovani (kao rezultat nedovoljno naučene standardne naglasne norme kod neštokavaca), što je najuočljivije na korpusu prefigiranih glagola (nastalih prefiksacijom). Takvu pojavu nazivamo <b>hiperkorekcijom</b> i u standardu se smatra, zasad, pogreškom. Riječ je o analoškoj pojavi. Na prefiks se, dakle, pomiču samo silazni naglasci: dugosilazni, iza kojega ostaje zanaglasna dužina, i kratkosilazni.
+          Danas je u razgovornom jeziku česta pojava da se prema početku riječi pomiču i oni naglasci koji nisu uzlazni ili tipološki uvjetovani (kao rezultat nedovoljno naučene standardne naglasne norme kod neštokavaca), što je najuočljivije na korpusu prefigiranih glagola (nastalih prefiksacijom). Takvu pojavu nazivamo <b>hiperkorekcijom</b> i u standardu se smatra, zasad, pogreškom. Riječ je o analoškoj pojavi.
         </p>
 
         <div className="primjer-box hiperkorekcija-primjeri">
@@ -99,7 +98,9 @@ export default function NaglasciUParadigmiPage() {
         </p>
 
         <p>
-          Promjena tona naziva se metatonija i danas ju nalazimo u primjerima kada silazni metatonira u uzlazni na središnjem slogu: <i>poljoprȉvreda &gt; poljoprìvreda</i>, što je česta praksa u normativnim priručnicima. Premještanje naglaska iste vrste sa sloga na slog naziva se metataksa. Metatonije su se odvijale prema ovim obrascima:
+          Promjena tona naziva se metatonija i danas ju nalazimo u primjerima kada silazni metatonira u uzlazni na središnjem slogu: <i>poljoprȉvreda &gt; poljoprìvreda</i>, što je česta praksa u normativnim priručnicima. Premještanje naglaska iste vrste sa sloga na slog naziva se metataksa. 
+          <br/>
+          Metatonije su se odvijale prema ovim obrascima:
         </p>
 
         <div className="metatonija-tablica">

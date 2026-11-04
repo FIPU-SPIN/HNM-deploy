@@ -86,9 +86,8 @@ export default function GovornaRijecPage() {
         </div>
 
         <p>
-          Odnos može biti i drukčiji: jedna se jezična riječ može izgovarati kao dvije
-          govorne riječi, npr. u superlativima (<i>nȃjsrètnijī</i>) ili složenicama
-          (<i>àutocȅsta</i>).
+          Odnos može biti i drukčiji: jedna se jezična riječ u priručnicima ponegdje prikazuje kao dvije govorne riječi, kada se izgovara s dva naglaska, 
+          kao u superlativima (npr. <i>nȃjsrètnijī</i>) ili u složenicama (npr. <i>àutocȅsta</i>).
         </p>
 
         <h3>Naglasnice i nenaglasnice</h3>
@@ -129,7 +128,7 @@ export default function GovornaRijecPage() {
           <p>Rekao je | da će | doći.</p>
           <p>Rekao je | da će doći.</p>
 
-          <p>Dat će | ako | bude | imao.</p>
+          <p>Dat će | ako bude | imao.</p>
           <p>Dat će | ako bude | imao.</p>
         </div>
 
@@ -151,10 +150,13 @@ export default function GovornaRijecPage() {
         <p>
           Nekada je u standardnoj normi bilo obvezno pomicanje silaznih naglasaka. Danas je to zastarjelo i regionalno obojeno.
         </p>
+        <p>
+          U južnoj je regiji pomicanje češće…
+        </p>
 
         {/* ZVUK 1.5.3 */}
         <div className="audio-section">
-          <p>Poslušaj stariju normu:</p>
+          <p>Poslušajte stariju normu:</p>
           <button className="zvuk-gumb" onClick={() => playSound("1-5-3a")}>🔊 Poslušaj</button>
         </div>
 
@@ -185,21 +187,23 @@ export default function GovornaRijecPage() {
         </p>
 
         <p>
-          Pomicanje naglaska znači da prednaglasnica postaje dio naglasne cjeline.
+          Pomicanje je naglaska, dakle, obuhvaćanje prednaglasnice naglaskom
         </p>
-
-        <div className="primjer-box">
-          <p><b>Neoslabljeno (preskakanje):</b> prȅko grāda</p>
-          <p><b>Oslabljeno (prenošenje):</b> pokràj kućē</p>
-        </div>
 
         <p>
           Neoslabljeno pomicanje naziva se i <b>preskakanje naglaska</b>, a oslabljeno
           <b> prenošenje naglaska</b>.
         </p>
+        <div className="primjer-box">
+          <p><b>Neoslabljeno (preskakanje):</b> prȅko grāda</p>
+          <p><b>Oslabljeno (prenošenje):</b> pokràj kućē</p>
+        </div>
 
+       
         <p>
-          Iznimno se može ostvariti zanaglasna dužina te dugouzlazni naglasak:
+          Iznimno se na prednaglasnici ostvaruje i zanaglasna dužina kada se u govornoj riječi jave nenaglašeni oblici zamjenica <i>mȅne, tȅbe, sȅbe, njȅga (me, te, se, nj)</i> uz prijedlog koji završava na suglasnik te koji zatim dobiva dugi <i>ā: prȅdā me, ȕzā te, ȕzā se, pȍdā nj</i>. 
+          Na prijedlozima koji završavaju na samoglasnik uz navedene se zanaglasnice ostvaruje dugi naglasak: <i>zá me, ná te, ná se, pȏ nj, zȃ nj</i>. 
+
         </p>
 
         <div className="primjer-box">
@@ -208,8 +212,7 @@ export default function GovornaRijecPage() {
         </div>
 
         <p>
-          Te su govorne riječi ustaljene i pokazuju da su ti oblici nekada bili
-          naglašeni.
+          Te su govorne riječi već ustaljene sintaktičke sveze i svjedoče o tome da su nenaglašeni oblici akuzativa nekada, u povijesti jezika, bili naglašeni.
         </p>
 
         <h3>Povijesna uvjetovanost</h3>
