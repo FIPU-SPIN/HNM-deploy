@@ -1628,6 +1628,63 @@ main {
     color: #2c3e50;
 }
 
+/* PODSTRANICE – UVODNI GUMBI */
+/* GUMBI ZA PODSTRANICE */
+
+.teme-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0 20px 0;
+}
+
+.tema-stavka {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #28837d;
+    color: #28837d !important;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(40, 131, 125, 0.3);
+}
+
+.tema-stavka span {
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.tema-stavka:hover {
+    background: #3aa6a0;
+    color: #28837d !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(40, 131, 125, 0.4);
+}
+
+.tema-stavka:hover span {
+    color: white;
+    transform: translateX(4px);
+}
+
+/* MOBILNI PRIKAZ */
+@media (max-width: 600px) {
+    .teme-lista {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .tema-stavka {
+        padding: 11px 15px;
+        font-size: 0.95rem;
+    }
+}
+
 .primjer-box {
     background: rgba(110, 220, 210, 0.1);
     border-left: 4px solid #6edcd2;

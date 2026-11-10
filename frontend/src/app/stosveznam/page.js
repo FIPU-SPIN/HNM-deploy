@@ -62,16 +62,39 @@ export default function StoSveZnamPage() {
       {/* UVOD */}
       <div className="stosveznam-intro">
 
-        <div className="primjer-box uvodni-tekst">
-          <p>
-            Ovo je mjesto za identificiranje svoga naglasnog sustava te za provjeru
-            osnovnih znanja o naglascima i naglasnoj normi, o naglasnim sustavima,
-            varijetetima i pravilima u hrvatskome jeziku..
-          </p>
-          <p className="zakljucak-tekst">
-            <strong>Nakon ove razine spremni ste za uvježbavanje percepcije i produkcije naglasaka.</strong>
-          </p>
-        </div>
+       <div className="primjer-box uvodni-tekst">
+  <p>
+    Ovo je mjesto gdje ćete otkriti kojim naglasnim sustavom govorite te provjeriti osnovna znanja o naglascima, naglasnoj normi, naglasnim sustavima, regijama i varijetetima u hrvatskome jeziku. Nakon što odredite naglasni sustav kojim Vi govorite (kvizom na dnu stranice), na podstranicama možete svladati i uvježbavati (različitim kvizovima) i ove teme:
+  </p>
+
+  <div className="teme-lista">
+  <Link href="/stosveznam/GovornaRijec" className="tema-stavka">
+    <b>Govorna riječ</b>
+    <span>→</span>
+  </Link>
+
+  <Link href="/stosveznam/Inventar" className="tema-stavka">
+   <b>Naglasni inventar</b>
+    <span>→</span>
+  </Link>
+
+  <Link href="/stosveznam/Distribucijska" className="tema-stavka">
+    <b>Distribucijska pravila</b>
+    <span>→</span>
+  </Link>
+
+  <Link href="/stosveznam/NaglasciUParadigmi" className="tema-stavka">
+    <b>Naglasci u paradigmi</b>
+    <span>→</span>
+  </Link>
+</div>
+
+  <p className="zakljucak-tekst">
+    <strong>
+      Nakon ove razine spremni ste za uvježbavanje percepcije i produkcije naglasaka.
+    </strong>
+  </p>
+</div>
 
         <h3>Jezična biografija govornika</h3>
 

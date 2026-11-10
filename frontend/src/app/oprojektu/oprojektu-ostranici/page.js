@@ -9,7 +9,7 @@ export default function OStraniciPage() {
 
         <h2 className="podnaslov">Kome je namijenjena ova mrežna stranica?</h2>
         <p className="tekst-odlomak">
-          Naglasna norma hrvatskoga standardnog jezika kompleksna je i za učenje i za poučavanje. Ovom mrežnom stranicom (koja se temelji na priručniku i vježbenici <i>Kiša, sunce, trava, rosa </i>) želimo pomoći profesorima, nastavnicima i učiteljima u poučavanju naglasne norme, a studentima, učenicima i svima koje zanima izgovorna norma u njezinu ovladavanju. Zvučni zapisi mogu biti temelj za daljnja (socio)fonetska istraživanja. Ozvučeni repozitorij glagola, koji se otvara u drugoj godini projekta, temelj je za mrežni ozvučeni rječnik hrvatskoga jezika.
+          Naglasna norma hrvatskoga standardnog jezika kompleksna je i za učenje i za poučavanje. Ovom mrežnom stranicom (koja se temelji na priručniku i vježbenici <i>Kiša, sunce, trava, rosa</i>) želimo pomoći profesorima, nastavnicima i učiteljima u poučavanju naglasne norme, a studentima, učenicima i svima koje zanima izgovorna norma u njezinu ovladavanju. Zvučni zapisi mogu biti temelj za daljnja (socio)fonetska istraživanja. Ozvučeni repozitorij glagola, koji se otvara u drugoj godini projekta, temelj je za mrežni ozvučeni rječnik hrvatskoga jezika.
         </p>
 
         <h2 className="podnaslov">Što mogu očekivati na ovoj mrežnoj stranici?</h2>
@@ -29,7 +29,7 @@ export default function OStraniciPage() {
 
         <h2 className="podnaslov">Čiji je glas u zvučnim zapisima?</h2>
         <p className="tekst-odlomak">
-          Riječi, rečenice i tekstove čitali su spikeri Melita Hrengek i Ivanu Kojundžić. Svojim su ugodnim glasom i savršenom dikcijom izgovarali i standardni izgovor, ali i razne varijante koje nikada ne bi izgovorili u eteru, odmičući se prema visokom varijetetu ili prema „zagrebačkom izgovoru”, jer sve to čini izgovornu stvarnost hrvatskoga jezika.
+          Riječi, rečenice i tekstove čitali su spikeri Melita Hrengek i Ivan Kojundžić. Svojim su ugodnim glasom i savršenom dikcijom izgovarali i standardni izgovor, ali i razne varijante koje nikada ne bi izgovorili u eteru, odmičući se prema visokom varijetetu ili prema „zagrebačkom izgovoru”, jer sve to čini izgovornu stvarnost hrvatskoga jezika.
         </p>
         <p className="tekst-odlomak">
           Tekstove su čitali i autori tekstova koji se javljaju u zvučnim zapisima: Aleksandar Bančić, Branka Barčot, Augusta Benčić Ivančin, Iva Bezinović-Haydon, Ivana Bodrožić, Irena Bratičević, Zoran Ferić, Lorna Rajle, Olja Savičević Ivančević, Roman Simić i Hrvoje Šalković. Za primjere čakavskoga i kajkavskoga akuta ustupili su nam po jednu na dijalektu: Ičica Barišić, koja izvodi svoju pjesmu na hvarskoj čakavštini i Velimir Piškorec, koji zajedno s Vesnom Petrović-Peroković izvodi svoju pjesmu na đurđevečkoj kajkavštini. Akut i različite vrtse intonacija izgovarala je Jelena Vlašić Duić.

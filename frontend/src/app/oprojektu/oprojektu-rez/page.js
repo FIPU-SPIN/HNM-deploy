@@ -10,7 +10,7 @@ export default function RezultatiPage() {
         <h2 className="podnaslov">Izlaganja na znanstvenim skupovima</h2>
 
         <div className="rad-citat">
-        Martinović, Blaženka. 2026. „Croatian Accents Online”, <i>6th DARIAH-HR: International Conference Digital Humanities & Heritage</i>, Pula, 7.–9. listopada 2026. (poster: https://dhh.dariah.hr/2026/posters/). Naslov konferencije (Digital Humanities & Heritage)
+        Martinović, Blaženka. 2026. „Croatian Accents Online”, <i>6th DARIAH-HR: International Conference Digital Humanities & Heritage</i>, Pula, 7.–9. listopada 2026. (poster: https://dhh.dariah.hr/2026/posters/).
         </div>
       
         <div className="rad-citat">
